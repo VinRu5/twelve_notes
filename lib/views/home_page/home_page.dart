@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:twelve_notes/models/song.dart';
 import 'package:twelve_notes/data/json_data.dart';
@@ -37,6 +38,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.only(top: 100.0),
         child: RenderSong(
           text: song.text,
+          chords: song.chords,
           width: 300,
         ),
       );

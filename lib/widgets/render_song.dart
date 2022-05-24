@@ -4,9 +4,11 @@ import 'package:twelve_notes/misc/paint_song.dart';
 class RenderSong extends StatefulWidget {
   final String text;
   final double width;
+  final List<dynamic> chords;
   const RenderSong({
     required this.text,
     required this.width,
+    required this.chords,
     Key? key,
   }) : super(key: key);
 
@@ -41,11 +43,6 @@ class _RenderSongState extends State<RenderSong> {
     return positionsSaved;
   }
 
-  double getWidth(BuildContext context) {
-    print(context.size);
-    return 100.0;
-  }
-
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
@@ -54,6 +51,7 @@ class _RenderSongState extends State<RenderSong> {
         text: widget.text.replaceAll('@', ''),
         maxWidth: widget.width, //MediaQuery.of(context).size.width,
         positions: positions,
+        chords: widget.chords,
       ),
     );
   }

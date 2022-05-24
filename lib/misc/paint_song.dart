@@ -4,11 +4,13 @@ class PaintSong extends CustomPainter {
   final String text;
   final double maxWidth;
   final List<int> positions;
+  final List<dynamic> chords;
 
   PaintSong({
     required this.text,
     required this.maxWidth,
     required this.positions,
+    required this.chords,
   });
 
   @override
@@ -17,34 +19,40 @@ class PaintSong extends CustomPainter {
       text: text,
       style: TextStyle(height: 3, color: Colors.black),
     );
-    final chord = TextSpan(
-      text: 'SOL',
-      style: TextStyle(color: Colors.black),
-    );
 
     final drawMainText = TextPainter()
       ..textDirection = TextDirection.ltr
       ..text = mainText
       ..layout(maxWidth: maxWidth);
 
-    final drawChord = TextPainter()
-      ..textDirection = TextDirection.ltr
-      ..text = chord
-      ..layout(maxWidth: maxWidth);
     drawMainText.paint(canvas, Offset(0, 0));
 
-    for (var position in positions) {
+    for (var i = 0; i < positions.length; i++) {
+      final position = positions[i];
+      final textChord = chords[i];
+
+      final chord = TextSpan(
+        text: textChord,
+        style: TextStyle(color: Colors.black),
+      );
+
+      final drawChord = TextPainter()
+        ..textDirection = TextDirection.ltr
+        ..text = chord
+        ..layout(maxWidth: maxWidth);
+
       final caretOffset = drawMainText.getOffsetForCaret(
         TextPosition(
           offset: position,
-          affinity: TextAffinity.upstream,
+
+          ///affinity: TextAffinity.upstream,
         ),
         Rect.zero,
       );
-      final dx = caretOffset.dx;
-      final dy = caretOffset.dy;
+      // final dx = caretOffset.dx;
+      // final dy = caretOffset.dy;
 
-      drawChord.paint(canvas, Offset(dx, (dy - 15)));
+      drawChord.paint(canvas, caretOffset);
     }
   }
 

@@ -2,16 +2,14 @@ const jsonData = '''
 [
     {
         "title" : "Davanti al crocifisso",
-        "text" : "@Altissim@o e glorioso@ Iddio @Illumina, @illumina il cuore @mio,@ @ A@ltissim@o e glorioso@ Iddio @Illumina, @illumina le tenebre del cuore @mio, @Dammi fede retta @e speranza certa, @carità perfetta @umiltà profonda, e @dammi senno@ e co@gnoscimento, @che io possa s@empre servire il tuo @santo comandamento.@ @ @",
+        "text" : "A@ltissim@o e glorioso@ Iddio @Illumina, @illumina il cuore @mio,                       Al@tissim@o e glorioso@ Iddio @Illumina, @illumina le tenebre del cuore @mio, @Dammi fede retta @e speranza certa, @carità perfetta @umiltà profonda, e @dammi senno@ e co@gnoscimento, @che io possa s@empre servire il tuo @santo comandamento@.                     ",
         "chords" : [
             "Sol",
             "Re",
             "Mim",
             "Do",
             "Re",
-            "Sol",
-            "Do",
-            "Re",
+            "Sol Do Re",
             "Sol",
             "Re",
             "Mim",
@@ -28,9 +26,7 @@ const jsonData = '''
             "Mim",
             "Re",
             "Do",
-            "Re",
-            "Do",
-            "Re"
+            "Re Do Re"
 
         ]
     }

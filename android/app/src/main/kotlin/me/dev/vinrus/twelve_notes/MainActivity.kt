@@ -1,0 +1,6 @@
+package me.dev.vinrus.twelve_notes
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

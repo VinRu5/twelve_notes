@@ -8,8 +8,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'Twelve Notes',
-        theme: TwelveTheme.light(context),
-        darkTheme: TwelveTheme.dark(context),
+        theme: TwelveTheme.light,
+        darkTheme: TwelveTheme.dark,
         home: MockupWidget(),
       );
 }

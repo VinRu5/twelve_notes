@@ -104,6 +104,7 @@ class TwelveTypographyExtension extends ThemeExtension<TwelveTypographyExtension
       letterSpacing: 0,
     ),
     this.buttonText = const TextStyle(
+      fontWeight: FontWeight.w600,
       fontSize: 18,
       height: 21 / 18,
       letterSpacing: 0,

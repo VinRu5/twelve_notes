@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twelve_notes/src/theme/twelve_colors.dart';
 import 'package:twelve_notes/src/theme/twelve_typography.dart';
 
 class MockupWidget extends StatefulWidget {
@@ -9,10 +10,14 @@ class MockupWidget extends StatefulWidget {
 }
 
 class _MockupWidgetState extends State<MockupWidget> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text('Twelve Notes ♪'),
+          leading: Icon(Icons.access_alarms_rounded),
+          actions: [Icon(Icons.hail_sharp)],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
@@ -97,7 +102,11 @@ class _MockupWidgetState extends State<MockupWidget> {
                 ),
                 Divider(),
                 Card(
-                  child: Text('Card'),
+                  child: SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Text('Card'),
+                  ),
                 ),
                 IconButton(
                   onPressed: () {},
@@ -146,11 +155,29 @@ class _MockupWidgetState extends State<MockupWidget> {
           ),
         ),
         bottomNavigationBar: NavigationBar(
-          onDestinationSelected: (index) {},
-          selectedIndex: 1,
+          onDestinationSelected: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          selectedIndex: _selectedIndex,
           destinations: [
-            Icon(Icons.settings),
-            Icon(Icons.home),
+            NavigationDestination(
+              selectedIcon: Icon(
+                Icons.home,
+                color: TwelveColors.bgLight,
+              ),
+              icon: Icon(Icons.home_outlined),
+              label: 'Home',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(
+                Icons.settings,
+                color: TwelveColors.bgLight,
+              ),
+              icon: Icon(Icons.settings_outlined),
+              label: 'Settings',
+            ),
           ],
         ),
       );

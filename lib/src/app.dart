@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:twelve_notes/src/theme/mockup_widget.dart';
+import 'package:twelve_notes/src/theme/twelve_theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -6,8 +8,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'Twelve Notes',
-        home: Scaffold(
-          body: Placeholder(),
-        ),
+        theme: TwelveTheme.light,
+        darkTheme: TwelveTheme.dark,
+        home: MockupWidget(),
       );
 }

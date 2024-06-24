@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = twelve_notes
+PRODUCT_NAME = TwelveNotes
 
 // The application's bundle identifier
 PRODUCT_BUNDLE_IDENTIFIER = me.dev.vinrus.twelveNotes
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024 me.dev.vinrus. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 Vincenzo Russo All rights reserved.

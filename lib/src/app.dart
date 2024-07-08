@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:twelve_notes/src/di/dependency_injector.dart';
 import 'package:twelve_notes/src/router/app_router.dart';
 import 'package:twelve_notes/src/theme/twelve_theme.dart';
@@ -16,7 +17,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) => DependencyInjector(
         child: MaterialApp.router(
           onGenerateTitle: (context) => AppLocalizations.of(context).appName,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          localizationsDelegates: const [
+            FormBuilderLocalizationsDelegate(),
+            ...AppLocalizations.localizationsDelegates,
+          ],
           supportedLocales: AppLocalizations.supportedLocales,
           theme: TwelveTheme.light,
           darkTheme: TwelveTheme.dark,

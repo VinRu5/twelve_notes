@@ -1,4 +1,10 @@
 {
   "@@locale": "it",
-  "appName": "TweleNotes"
+  "appName": "TweleNotes",
+  "titleLogin": "Pronto per suonare!!!🎸",
+  "ctaLogin": "Accedi",
+  "signUpText": "Non sei ancora registrato?",
+  "signUpCta": "Registrati!!!🚀",
+  "emailLabel": "Email",
+  "passwordLabel": "Password"
 }

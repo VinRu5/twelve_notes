@@ -109,6 +109,12 @@ class TwelveTypographyExtension extends ThemeExtension<TwelveTypographyExtension
       height: 21 / 18,
       letterSpacing: 0,
     ),
+    this.errorStyle = const TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      height: 16 / 14,
+      letterSpacing: .2,
+    ),
   })  : labelLarge = TextStyle(
           color: brightness == Brightness.light
               ? TwelveColors.textLabelLight
@@ -162,6 +168,8 @@ class TwelveTypographyExtension extends ThemeExtension<TwelveTypographyExtension
 
   final TextStyle buttonText;
 
+  final TextStyle errorStyle;
+
   @override
   TwelveTypographyExtension copyWith({
     TextStyle? headlineLarge,
@@ -183,6 +191,7 @@ class TwelveTypographyExtension extends ThemeExtension<TwelveTypographyExtension
     TextStyle? chordLarge,
     TextStyle? chordMedium,
     TextStyle? chordSmall,
+    TextStyle? errorStyle,
   }) {
     return TwelveTypographyExtension(
       brightness,
@@ -205,6 +214,7 @@ class TwelveTypographyExtension extends ThemeExtension<TwelveTypographyExtension
       chordLarge: chordLarge ?? this.chordLarge,
       chordMedium: chordMedium ?? this.chordMedium,
       chordSmall: chordSmall ?? this.chordSmall,
+      errorStyle: errorStyle ?? this.errorStyle,
     );
   }
 

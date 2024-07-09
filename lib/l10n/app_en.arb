@@ -6,5 +6,8 @@
   "signUpText": "You haven't signed up yet?",
   "signUpCta": "SignUp!!!🚀",
   "emailLabel": "Email",
-  "passwordLabel": "Password"
+  "passwordLabel": "Password",
+  "or": "or",
+  "resetPswMessage": "You cannot to access?",
+  "resetPswCta": "Reset password 🔄"
 }

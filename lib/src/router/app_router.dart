@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:twelve_notes/src/auth/pages/login_page.dart';
+import 'package:twelve_notes/src/auth/presentation/pages/login_page.dart';
 
 part 'app_router.gr.dart';
 

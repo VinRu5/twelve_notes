@@ -6,7 +6,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:sign_button/sign_button.dart';
-import 'package:twelve_notes/src/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:twelve_notes/src/auth/presentation/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
 import 'package:twelve_notes/src/misc/constants.dart';
 import 'package:twelve_notes/src/theme/extension_theme.dart';

@@ -29,6 +29,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Firebase Options
+lib/firebase_options.dart
+
 # FVM related
 .fvm/flutter_sdk
 /pubspec.lock

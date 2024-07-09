@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:sign_button/sign_button.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:twelve_notes/src/misc/app_assets.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
 import 'package:twelve_notes/src/misc/constants.dart';
 import 'package:twelve_notes/src/theme/extension_theme.dart';
@@ -32,7 +33,7 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
                 BlendMode.lighten,
               ),
               image: AssetImage(
-                'assets/images/login_bg.jpg',
+                AppAssets.loginBg,
               ),
               opacity: .5,
               fit: BoxFit.cover,

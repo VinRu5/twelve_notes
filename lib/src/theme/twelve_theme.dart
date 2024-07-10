@@ -63,7 +63,7 @@ class TwelveTheme {
     onSecondary: TwelveColors.textLight,
     error: TwelveColors.error,
     onError: TwelveColors.textDark,
-    surface: TwelveColors.surfaceLight,
+    surface: TwelveColors.bgLight,
     onSurface: TwelveColors.textLight,
     surfaceContainerHighest: TwelveColors.surfaceLight,
     outline: TwelveColors.primary,
@@ -114,7 +114,7 @@ class TwelveTheme {
     style: FilledButton.styleFrom(
       textStyle: _typographyLight.buttonText,
       shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -122,7 +122,7 @@ class TwelveTheme {
     style: FilledButton.styleFrom(
       textStyle: _typographyDark.buttonText,
       shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -131,7 +131,7 @@ class TwelveTheme {
     style: ElevatedButton.styleFrom(
       textStyle: _typographyLight.buttonText,
       shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -139,7 +139,7 @@ class TwelveTheme {
     style: ElevatedButton.styleFrom(
       textStyle: _typographyDark.buttonText,
       shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -148,7 +148,7 @@ class TwelveTheme {
     style: TextButton.styleFrom(
       textStyle: _typographyLight.buttonText,
       shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -156,7 +156,7 @@ class TwelveTheme {
     style: TextButton.styleFrom(
       textStyle: _typographyDark.buttonText,
       shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -165,7 +165,7 @@ class TwelveTheme {
     style: OutlinedButton.styleFrom(
       textStyle: _typographyLight.buttonText,
       shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -173,7 +173,7 @@ class TwelveTheme {
     style: OutlinedButton.styleFrom(
       textStyle: _typographyDark.buttonText,
       shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );

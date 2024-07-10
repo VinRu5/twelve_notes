@@ -29,8 +29,9 @@ migrate_working_dir/
 .pub/
 /build/
 
-# Firebase Options
+# Firebase
 lib/firebase_options.dart
+saved-data/
 
 # FVM related
 .fvm/flutter_sdk

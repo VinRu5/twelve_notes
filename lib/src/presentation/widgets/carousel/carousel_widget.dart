@@ -33,36 +33,47 @@ class CarouselWidget extends StatelessWidget {
                   curve: Curves.easeIn,
                 );
           },
-          builder: (context, page) => Column(
-            children: [
-              Expanded(
-                child: PageView.builder(
-                  controller: context.read<CarouselCubit>().pageController,
-                  onPageChanged: context.read<CarouselCubit>().onPageChanged,
-                  physics: autoAnimation ? const NeverScrollableScrollPhysics() : null,
-                  itemCount: views.length,
-                  itemBuilder: (context, index) => views[index],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: SizedBox(
-                  height: 8.0,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
+          builder: (context, page) => Container(
+            constraints: BoxConstraints(
+              minHeight: 400.0,
+              minWidth: 250.0,
+            ),
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height - 300.0,
+                  child: PageView.builder(
+                    controller: context.read<CarouselCubit>().pageController,
+                    onPageChanged: context.read<CarouselCubit>().onPageChanged,
+                    physics: autoAnimation ? const NeverScrollableScrollPhysics() : null,
                     itemCount: views.length,
-                    separatorBuilder: (context, index) => const SizedBox(width: 16.0),
-                    itemBuilder: (context, index) => index == page
-                        ? const _SelectedDot(
-                            duration: animationDuration,
-                          )
-                        : const _CircleDot(),
+                    itemBuilder: (context, index) => views[index],
                   ),
                 ),
-              ),
-            ],
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: SizedBox(
+                      height: 8.0,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: views.length,
+                        separatorBuilder: (context, index) => const SizedBox(width: 16.0),
+                        itemBuilder: (context, index) => index == page
+                            ? const _SelectedDot(
+                                duration: animationDuration,
+                              )
+                            : const _CircleDot(),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );

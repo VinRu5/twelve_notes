@@ -32,6 +32,7 @@ migrate_working_dir/
 # Firebase
 lib/firebase_options.dart
 saved-data/
+firebase-export-1720616366901O44BzN/
 
 # FVM related
 .fvm/flutter_sdk

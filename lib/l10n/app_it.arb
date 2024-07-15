@@ -9,5 +9,11 @@
   "passwordLabel": "Password",
   "or": "o",
   "resetPswMessage": "Non riesci ad accedere?",
-  "resetPswCta": "Resetta la password 🔄"
+  "resetPswCta": "Resetta la password 🔄",
+  "welcomeMessage1": "Suona la musica che ami.",
+  "welcomeMessage2": "Ovunque tu sia.",
+  "welcomeMessage3": "Convidila con chi vuoi.",
+  "welcomeMessage4": "Divertiti.",
+  "welcomeCta": "Inizia subito",
+  "closeCta": "Chiudi"
 }

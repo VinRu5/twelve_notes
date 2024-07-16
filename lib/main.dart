@@ -1,9 +1,13 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:talker/talker.dart';
+import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 import 'package:twelve_notes/firebase_options.dart';
 import 'package:twelve_notes/src/app.dart';
 import 'package:window_manager/window_manager.dart';
@@ -16,6 +20,14 @@ void main() async {
   );
 
   await FirebaseAuth.instance.useAuthEmulator('127.0.0.1', 9099);
+
+  Bloc.observer = TalkerBlocObserver(
+    talker: Talker(
+      logger: TalkerLogger(
+        output: log,
+      ),
+    ),
+  );
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

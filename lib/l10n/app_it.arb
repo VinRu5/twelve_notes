@@ -15,5 +15,8 @@
   "welcomeMessage3": "Convidila con chi vuoi.",
   "welcomeMessage4": "Divertiti.",
   "welcomeCta": "Inizia subito",
-  "closeCta": "Chiudi"
+  "closeCta": "Chiudi",
+  "loginGenericError": "Si è verificato un errore. Riprova ad effettuare l'accesso.",
+  "loginWrongCredentials": "Le credenziali non sembrano corrette. Riprova.",
+  "loginAccountNotExsist": "L'account con cui stai provando ad accedere non esiste. Effettua la registrazione prima."
 }

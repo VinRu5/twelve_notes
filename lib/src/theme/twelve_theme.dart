@@ -90,11 +90,21 @@ class TwelveTheme {
     surfaceTintColor: TwelveColors.bgLight,
     color: TwelveColors.bgLight,
     centerTitle: true,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(24.0),
+      ),
+    ),
   );
   static const AppBarTheme _appBarThemeDark = AppBarTheme(
     surfaceTintColor: TwelveColors.bgDark,
     color: TwelveColors.bgDark,
     centerTitle: true,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(32),
+      ),
+    ),
   );
 
   static const NavigationBarThemeData _navigationBarThemeLight = NavigationBarThemeData(

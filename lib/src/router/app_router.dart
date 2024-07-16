@@ -36,7 +36,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: MainRoute.page, path: '/'),
+        AutoRoute(page: MainRoute.page, initial: true),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: RegistrationRoute.page),
         AutoRoute(page: WelcomeRoute.page),

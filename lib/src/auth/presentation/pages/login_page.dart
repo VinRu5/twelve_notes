@@ -5,12 +5,13 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:sign_button/sign_button.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:twelve_notes/src/errors/errors.dart';
 import 'package:twelve_notes/src/misc/app_assets.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
 import 'package:twelve_notes/src/misc/constants.dart';
+import 'package:twelve_notes/src/router/app_router.dart';
 import 'package:twelve_notes/src/theme/extension_theme.dart';
 import 'package:twelve_notes/src/theme/twelve_colors.dart';
 
@@ -32,6 +33,25 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: IconButton(
+                iconSize: 18.0,
+                onPressed: () => context.router.navigate(const WelcomeRoute()),
+                icon: const FaIcon(
+                  FontAwesomeIcons.xmark,
+                ),
+              ),
+            ),
+          ],
+          title: Text(
+            context.appStrings.titleLogin,
+          ),
+        ),
         body: Container(
           height: double.infinity,
           decoration: const BoxDecoration(
@@ -44,34 +64,29 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
           ),
           child: SafeArea(
             top: false,
-            child: Column(
-              children: [
-                const _HeaderLogin(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 40.0,
-                      horizontal: 16.0,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        _SignInWithEmailSection(
-                          colorCard: bgCard(context),
-                        ),
-                        const _Divider(),
-                        const SizedBox(height: 32.0),
-                        _SignInWithOAuth(
-                          colorCard: bgCard(context),
-                        ),
-                        const SizedBox(height: 60.0),
-                        const _SignUpText(),
-                      ],
-                    ),
-                  ),
+            child: BlocConsumer<SignInBloc, SignInState>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              builder: (context, state) => ListView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 150.0,
+                  horizontal: 16.0,
                 ),
-              ],
+                shrinkWrap: true,
+                children: [
+                  _SignInWithEmailSection(
+                    colorCard: bgCard(context),
+                    disabled: state is SigningInState,
+                    errorState: state is ErrorSignInState ? state : null,
+                  ),
+                  const SizedBox(height: 60.0),
+                  _ResetPassword(
+                    disabled: state is SigningInState,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -80,10 +95,21 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
 
 class _SignInWithEmailSection extends StatelessWidget {
   final Color colorCard;
+  final bool disabled;
+  final ErrorSignInState? errorState;
 
   const _SignInWithEmailSection({
     required this.colorCard,
+    this.disabled = false,
+    this.errorState,
   });
+
+  String? error(BuildContext context) => switch (errorState?.exception) {
+        WrongCredentialException() => context.appStrings.loginWrongCredentials,
+        AccountUserNotFoundException() => context.appStrings.loginAccountNotExsist,
+        null => null,
+        _ => context.appStrings.loginGenericError,
+      };
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -95,12 +121,19 @@ class _SignInWithEmailSection extends StatelessWidget {
             child: FormBuilder(
               key: context.read<SignInBloc>().formKey,
               autovalidateMode: AutovalidateMode.disabled,
-              child: const Column(
+              child: Column(
                 children: [
-                  _EmailField(),
-                  _PasswordField(),
-                  _LoginButton(),
-                  _ResetPassword(),
+                  _EmailField(
+                    disabled: disabled,
+                    error: error(context),
+                  ),
+                  _PasswordField(
+                    disabled: disabled,
+                    error: error(context),
+                  ),
+                  _LoginButton(
+                    disabled: disabled,
+                  ),
                 ],
               ),
             ),
@@ -109,56 +142,14 @@ class _SignInWithEmailSection extends StatelessWidget {
       );
 }
 
-class _SignInWithOAuth extends StatelessWidget {
-  final Color colorCard;
-
-  const _SignInWithOAuth({
-    required this.colorCard,
-  });
-
-  @override
-  Widget build(BuildContext context) => Card(
-        color: colorCard,
-        child: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              _GoogleAuthButton(),
-              SizedBox(height: 16.0),
-              _AppleAuthButton(),
-            ],
-          ),
-        ),
-      );
-}
-
-class _HeaderLogin extends StatelessWidget {
-  const _HeaderLogin();
-
-  @override
-  Widget build(BuildContext context) => Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: context.colorScheme.surface,
-          borderRadius: const BorderRadius.vertical(
-            bottom: Radius.circular(24.0),
-          ),
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: Text(
-              context.appStrings.titleLogin,
-              style: context.twelveStyle?.titleLarge,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
-}
-
 class _EmailField extends StatelessWidget {
-  const _EmailField();
+  final bool disabled;
+  final String? error;
+
+  const _EmailField({
+    this.disabled = false,
+    this.error,
+  });
 
   @override
   Widget build(BuildContext context) => FormBuilderTextField(
@@ -166,6 +157,8 @@ class _EmailField extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           hintText: context.appStrings.emailLabel,
+          errorText: error,
+          errorMaxLines: 2,
           prefixIcon: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -177,18 +170,14 @@ class _EmailField extends StatelessWidget {
             ],
           ),
           suffixIcon: IconButton(
-            onPressed: () => context
-                .read<SignInBloc>()
-                .formKey
-                .currentState
-                ?.fields[SignInBloc.emailNameKey]
-                ?.reset(),
+            onPressed: () => context.read<SignInBloc>().emailField?.reset(),
             icon: const FaIcon(
               FontAwesomeIcons.xmark,
               size: 16.0,
             ),
           ),
         ),
+        enabled: !disabled,
         validator: FormBuilderValidators.compose([
           FormBuilderValidators.required(),
           FormBuilderValidators.email(),
@@ -197,7 +186,13 @@ class _EmailField extends StatelessWidget {
 }
 
 class _PasswordField extends StatefulWidget {
-  const _PasswordField();
+  final bool disabled;
+  final String? error;
+
+  const _PasswordField({
+    this.disabled = false,
+    this.error,
+  });
 
   @override
   State<_PasswordField> createState() => _PasswordFieldState();
@@ -212,9 +207,12 @@ class _PasswordFieldState extends State<_PasswordField> {
         child: FormBuilderTextField(
           name: SignInBloc.passwordNameKey,
           keyboardType: TextInputType.visiblePassword,
+          enabled: !widget.disabled,
           obscureText: obscureText,
           decoration: InputDecoration(
             hintText: context.appStrings.passwordLabel,
+            errorText: widget.error,
+            errorMaxLines: 2,
             prefixIcon: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -239,12 +237,7 @@ class _PasswordFieldState extends State<_PasswordField> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () => context
-                      .read<SignInBloc>()
-                      .formKey
-                      .currentState
-                      ?.fields[SignInBloc.passwordNameKey]
-                      ?.reset(),
+                  onPressed: () => context.read<SignInBloc>().passwordField?.reset(),
                   icon: const FaIcon(
                     FontAwesomeIcons.xmark,
                     size: 16.0,
@@ -263,105 +256,59 @@ class _PasswordFieldState extends State<_PasswordField> {
 }
 
 class _LoginButton extends StatelessWidget {
-  const _LoginButton();
+  final bool disabled;
+
+  const _LoginButton({
+    this.disabled = false,
+  });
 
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(top: 32.0),
         child: FilledButton(
-          onPressed: () {
-            context.read<SignInBloc>().formKey.currentState?.saveAndValidate();
-          },
-          child: Text(context.appStrings.ctaLogin),
+          onPressed: disabled ? null : () => context.read<SignInBloc>().onSignIn(),
+
+          // () {
+          //     final SignInBloc signInBloc = context.read<SignInBloc>();
+          //     final isValid = signInBloc.formKey.currentState?.saveAndValidate();
+
+          //     if (isValid ?? false) {
+          //       signInBloc.signInWithEmail();
+          //     }
+          //   },
+          child: disabled ? const CircularProgressIndicator() : Text(context.appStrings.ctaLogin),
         ),
       );
 }
 
 class _ResetPassword extends StatelessWidget {
-  const _ResetPassword();
+  final bool disabled;
 
-  @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Card(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(context.appStrings.resetPswMessage),
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: context.twelveStyle?.buttonText.copyWith(fontSize: 14.0),
-                ),
-                onPressed: () {},
-                child: Text(context.appStrings.resetPswCta),
-              ),
-            ],
-          ),
-        ),
-      );
-}
-
-class _Divider extends StatelessWidget {
-  const _Divider();
-
-  @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
-              horizontal: 32.0,
-            ),
-            child: Row(
-              children: [
-                const Expanded(child: Divider()),
-                Text(
-                  context.appStrings.or.toUpperCase(),
-                  style: context.twelveStyle?.titleColorSmall,
-                ),
-                const Expanded(child: Divider()),
-              ],
-            ),
-          ),
-        ),
-      );
-}
-
-class _GoogleAuthButton extends StatelessWidget {
-  const _GoogleAuthButton();
-
-  @override
-  Widget build(BuildContext context) => SignInButton(
-        buttonType: ButtonType.googleDark,
-        onPressed: () {},
-      );
-}
-
-class _AppleAuthButton extends StatelessWidget {
-  const _AppleAuthButton();
-
-  @override
-  Widget build(BuildContext context) => SignInButton(
-        buttonType: ButtonType.appleDark,
-        onPressed: () {},
-      );
-}
-
-class _SignUpText extends StatelessWidget {
-  const _SignUpText();
+  const _ResetPassword({
+    this.disabled = false,
+  });
 
   @override
   Widget build(BuildContext context) => Card(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(context.appStrings.signUpText),
-            TextButton(
-              onPressed: () {},
-              child: Text(context.appStrings.signUpCta),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Flexible(child: Text(context.appStrings.resetPswMessage)),
+              Flexible(
+                fit: FlexFit.tight,
+                child: TextButton(
+                  onPressed: disabled ? null : () {},
+                  child: Text(
+                    context.appStrings.resetPswCta,
+                    style: context.twelveStyle?.bodyMedium,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       );
 }

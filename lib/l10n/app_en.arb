@@ -15,5 +15,8 @@
   "welcomeMessage3": "Share it with whomever you want.",
   "welcomeMessage4": "Have fun.",
   "welcomeCta": "Start now",
-  "closeCta": "Close"
+  "closeCta": "Close",
+  "loginGenericError": "An error has occurred. Please try logging in again.",
+  "loginWrongCredentials": "The credentials don't seem to be correct. Please try again.",
+  "loginAccountNotExsist": "The account you're trying to log in with does not exist. Please register before."
 }

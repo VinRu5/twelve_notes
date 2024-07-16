@@ -18,6 +18,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
   final formKey = GlobalKey<FormBuilderState>();
 
+  get emailField => formKey.currentState?.fields[emailNameKey];
+  get passwordField => formKey.currentState?.fields[passwordNameKey];
+
   SignInBloc({required this.authenticationRepository}) : super(SignInInitial()) {
     on<PerformSignInEvent>(_onPerformSignIn);
     on<PerformSignInWithGoogleEvent>(_onPerformSignInGoogle);
@@ -30,10 +33,14 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   ) async {
     emit(SigningInState());
     try {
+      final String email = emailField?.value;
+      final String password = passwordField?.value;
+
       final UserCredential userCredential = await authenticationRepository.signInWithEmail(
-        event.email,
-        event.password,
+        email,
+        password,
       );
+
       emit(
         SuccessSignInState(userCredential: userCredential),
       );
@@ -78,18 +85,19 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     }
   }
 
-  void signInWithEmail(
-    String email,
-    String password,
-  ) =>
-      add(
-        PerformSignInEvent(
-          email: email,
-          password: password,
-        ),
+  void signInWithEmail() => add(
+        PerformSignInEvent(),
       );
 
   void signInWithGoogle() => add(PerformSignInWithGoogleEvent());
 
   void signInWithApple() => add(PerformSignInWithAppleEvent());
+
+  void onSignIn() {
+    final isValid = formKey.currentState?.saveAndValidate();
+
+    if (isValid ?? false) {
+      signInWithEmail();
+    }
+  }
 }

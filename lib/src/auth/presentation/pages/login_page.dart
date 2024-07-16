@@ -6,6 +6,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:sign_button/sign_button.dart';
+import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:twelve_notes/src/misc/app_assets.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
@@ -16,9 +17,12 @@ import 'package:twelve_notes/src/theme/twelve_colors.dart';
 @RoutePage()
 class LoginPage extends StatelessWidget implements AutoRouteWrapper {
   const LoginPage({super.key});
+
   @override
   Widget wrappedRoute(BuildContext context) => BlocProvider(
-        create: (context) => SignInBloc(),
+        create: (context) => SignInBloc(
+          authenticationRepository: context.read<AuthenticationRepository>(),
+        ),
         child: this,
       );
 

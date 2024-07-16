@@ -24,4 +24,10 @@ class SuccessSignInState extends SignInState {
       ];
 }
 
-final class ErrorSignInState extends SignInState {}
+final class ErrorSignInState extends SignInState {
+  final dynamic exception;
+
+  const ErrorSignInState({
+    required this.exception,
+  });
+}

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -13,18 +15,19 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  await FirebaseAuth.instance.useAuthEmulator('127.0.0.1', 9099);
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
 
-  await windowManager.ensureInitialized();
+  if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
+    await windowManager.ensureInitialized();
 
-  await windowManager.setMinimumSize(
-    const Size(300.0, 600.0),
-  );
-
+    await windowManager.setMinimumSize(
+      const Size(300.0, 600.0),
+    );
+  }
   runApp(
     const App(),
   );

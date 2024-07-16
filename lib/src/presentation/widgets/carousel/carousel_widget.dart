@@ -34,7 +34,7 @@ class CarouselWidget extends StatelessWidget {
                 );
           },
           builder: (context, page) => Container(
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               minHeight: 400.0,
               minWidth: 250.0,
             ),

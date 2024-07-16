@@ -7,16 +7,16 @@ final List<SingleChildWidget> datasources = [
   Provider<FirebaseAuth>(
     create: (_) => FirebaseAuth.instance,
   ),
-  // // Iniezione di Google Sign In
-  // Provider<GoogleSignIn>(
-  //   create: (_) => GoogleSignIn(
-  //     // gli scope sono i modi in cui effettuare il sign in
-  //     scopes: [
-  //       'https://www.googleapis.com/auth/userinfo.email',
-  //       'https://www.googleapis.com/auth/userinfo.profile',
-  //     ],
-  //   ),
-  // ),
+  // Iniezione di Google Sign In
+  Provider<GoogleSignIn>(
+    create: (_) => GoogleSignIn(
+      // gli scope sono i modi in cui effettuare il sign in
+      scopes: [
+        'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/userinfo.profile',
+      ],
+    ),
+  ),
   // Provider<SharedPreferencesDatasource>(
   //   create: (_) => SharedPreferencesDatasource(
   //     sharedPreferences: SharedPreferences.getInstance(),

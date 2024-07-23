@@ -6,7 +6,11 @@
   "signUpText": "Non sei ancora registrato?",
   "signUpCta": "Registrati!!!🚀",
   "emailLabel": "Email",
+  "emailConfirmLabel": "Conferma email",
   "passwordLabel": "Password",
+  "passwordConfirmLabel": "Conferma password",
+  "nameLabel": "Nome",
+  "surnameLabel": "Cognome",
   "or": "o",
   "resetPswMessage": "Non riesci ad accedere?",
   "resetPswCta": "Resetta la password 🔄",
@@ -18,5 +22,8 @@
   "closeCta": "Chiudi",
   "loginGenericError": "Si è verificato un errore. Riprova ad effettuare l'accesso.",
   "loginWrongCredentials": "Le credenziali non sembrano corrette. Riprova.",
-  "loginAccountNotExsist": "L'account con cui stai provando ad accedere non esiste. Effettua la registrazione prima."
+  "loginAccountNotExsist": "L'account con cui stai provando ad accedere non esiste. Effettua la registrazione prima.",
+  "titleRegister": "Registrati!!!",
+  "registerErrorEmailMatch": "Il campo email e conferma email devono coincidere",
+  "registerErrorPasswordMatch": "Il campo password e conferma password devono coincidere"
 }

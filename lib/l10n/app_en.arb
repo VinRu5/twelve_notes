@@ -6,7 +6,11 @@
   "signUpText": "You haven't signed up yet?",
   "signUpCta": "SignUp!!!🚀",
   "emailLabel": "Email",
+  "emailConfirmLabel": "Confirm email",
   "passwordLabel": "Password",
+  "passwordConfirmLabel": "Confirm password",
+  "nameLabel": "Name",
+  "surnameLabel": "Surname",
   "or": "or",
   "resetPswMessage": "You cannot to access?",
   "resetPswCta": "Reset password 🔄",
@@ -18,5 +22,8 @@
   "closeCta": "Close",
   "loginGenericError": "An error has occurred. Please try logging in again.",
   "loginWrongCredentials": "The credentials don't seem to be correct. Please try again.",
-  "loginAccountNotExsist": "The account you're trying to log in with does not exist. Please register before."
+  "loginAccountNotExsist": "The account you're trying to log in with does not exist. Please register before.",
+  "titleRegister": "SignUp!!!",
+  "registerErrorEmailMatch": "The email and confirm email fields must match.",
+  "registerErrorPasswordMatch": "The password and confirm password fields must match."
 }

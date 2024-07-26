@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "appName": "TweleNotes",
+  "appName": "TwelveNotes",
   "titleLogin": "Ready to play!!!🎸",
   "ctaLogin": "Login",
   "signUpText": "You haven't signed up yet?",
@@ -13,7 +13,7 @@
   "surnameLabel": "Surname",
   "or": "or",
   "resetPswMessage": "You cannot to access?",
-  "resetPswCta": "Reset password 🔄",
+  "resetPswCta": "Reset password🔄",
   "welcomeMessage1": "Play the music you love.",
   "welcomeMessage2": "Wherever you are.",
   "welcomeMessage3": "Share it with whomever you want.",
@@ -25,5 +25,11 @@
   "loginAccountNotExsist": "The account you're trying to log in with does not exist. Please register before.",
   "titleRegister": "SignUp!!!",
   "registerErrorEmailMatch": "The email and confirm email fields must match.",
-  "registerErrorPasswordMatch": "The password and confirm password fields must match."
+  "registerErrorPasswordMatch": "The password and confirm password fields must match.",
+  "ctaSignUp": "Sign Up",
+  "resetPswModalMessage": "We will send a message to the following email address:",
+  "resetPswModalCta": "Send email",
+  "errorWrongPassword": "The password must contain: 1 uppercase letter, 1 lowercase letter, 1 symbol, 1 number, and be at least 8 characters long.",
+  "errorAlreadyExsist": "This email is already registered. Please try another one.",
+  "errorGeneric": "An error has occurred. Please try again."
 }

@@ -24,4 +24,10 @@ final class SuccessSignUpState extends SignUpState {
       ];
 }
 
-final class ErrorSignUpState extends SignUpState {}
+final class ErrorSignUpState extends SignUpState {
+  final Object error;
+
+  const ErrorSignUpState({
+    required this.error,
+  });
+}

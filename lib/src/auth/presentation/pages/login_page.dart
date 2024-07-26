@@ -86,17 +86,27 @@ class _SmallContent extends StatefulWidget {
 }
 
 class _SmallContentState extends State<_SmallContent> with PositionRenderMixin {
-  double height = 0.0;
+  double _height = 0.0;
 
   @override
-  void initState() {
+  void didChangeDependencies() {
     SchedulerBinding.instance.addPostFrameCallback((duration) {
       final y = getGlobalHeightPosition(loginButtonKey);
       setState(() {
-        height = y - 16.0;
+        _height = y - 16.0;
       });
     });
-    super.initState();
+    super.didChangeDependencies();
+  }
+
+  double get height {
+    final shouldHeight = MediaQuery.of(context).size.height - _height;
+
+    if (shouldHeight > 0) {
+      return shouldHeight;
+    }
+
+    return 0.0;
   }
 
   @override
@@ -106,7 +116,7 @@ class _SmallContentState extends State<_SmallContent> with PositionRenderMixin {
             alignment: Alignment.bottomCenter,
             child: ImageBackground(
               asset: AppAssets.loginBg,
-              height: MediaQuery.of(context).size.height - height,
+              height: height,
             ),
           ),
           const _FormWidget(),
@@ -115,13 +125,15 @@ class _SmallContentState extends State<_SmallContent> with PositionRenderMixin {
 }
 
 class _FormWidget extends StatelessWidget {
-  const _FormWidget({super.key});
+  const _FormWidget();
 
   @override
   Widget build(BuildContext context) => BlocConsumer<SignInBloc, SignInState>(
         listener: (context, state) {
           if (state is SuccessSignInState) {
-            context.router.replace(const MainRoute());
+            context.router.replaceAll([
+              const MainRoute(),
+            ]);
           }
         },
         builder: (context, state) => ListView(

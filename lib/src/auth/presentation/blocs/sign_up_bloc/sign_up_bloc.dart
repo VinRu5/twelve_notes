@@ -50,7 +50,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         ),
       );
     } catch (e) {
-      emit(ErrorSignUpState());
+      emit(ErrorSignUpState(error: e));
     }
   }
 

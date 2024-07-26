@@ -37,7 +37,8 @@ class CarouselCubit extends Cubit<int> {
 
   void _handleTimer(Timer timer) {
     if (state == lastIndexPage) {
-      timer.cancel();
+      // timer.cancel();
+      emit(-1);
     }
     if (state < lastIndexPage) {
       emit(state + 1);

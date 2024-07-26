@@ -10,9 +10,11 @@ import 'package:twelve_notes/src/auth/presentation/widgets/email_field.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/image_background.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/name_field.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/password_field.dart';
+import 'package:twelve_notes/src/errors/errors.dart';
 import 'package:twelve_notes/src/misc/app_assets.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
 import 'package:twelve_notes/src/misc/responsive_builder.dart';
+import 'package:twelve_notes/src/presentation/widgets/twelve_error_card.dart';
 import 'package:twelve_notes/src/router/app_router.dart';
 import 'package:twelve_notes/src/utils/position_render_mixin.dart';
 
@@ -82,17 +84,27 @@ class _SmallContent extends StatefulWidget {
 }
 
 class _SmallContentState extends State<_SmallContent> with PositionRenderMixin {
-  double height = 0.0;
+  double _height = 0.0;
 
   @override
-  void initState() {
+  void didChangeDependencies() {
     SchedulerBinding.instance.addPostFrameCallback((duration) {
       final y = getGlobalHeightPosition(registrationButtonKey);
       setState(() {
-        height = y - 16.0;
+        _height = y - 16.0;
       });
     });
-    super.initState();
+    super.didChangeDependencies();
+  }
+
+  double get height {
+    final shouldHeight = MediaQuery.of(context).size.height - _height;
+
+    if (shouldHeight > 0) {
+      return shouldHeight;
+    }
+
+    return 0.0;
   }
 
   @override
@@ -102,7 +114,7 @@ class _SmallContentState extends State<_SmallContent> with PositionRenderMixin {
             alignment: Alignment.bottomCenter,
             child: ImageBackground(
               asset: AppAssets.registerBg,
-              height: MediaQuery.of(context).size.height - height,
+              height: height,
             ),
           ),
           const _FormWidget(),
@@ -120,109 +132,112 @@ class _FormWidget extends StatelessWidget {
             context.router.navigate(const LoginRoute());
           }
         },
-        builder: (context, state) => LayoutBuilder(
-          builder: (context, constraints) {
-            return FormBuilder(
-              key: context.read<SignUpBloc>().formKey,
-              autovalidateMode: AutovalidateMode.disabled,
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.symmetric(
-                  vertical: 150.0,
-                  horizontal: 16.0,
+        builder: (context, state) => FormBuilder(
+          key: context.read<SignUpBloc>().formKey,
+          autovalidateMode: AutovalidateMode.disabled,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(
+              vertical: 150.0,
+              horizontal: 16.0,
+            ),
+            shrinkWrap: true,
+            children: [
+              if (state is ErrorSignUpState)
+                TwelveErrorCard(
+                  errorMessage: switch (state.error) {
+                    WrongCredentialException() => context.appStrings.errorWrongPassword,
+                    AlreadyExistingAccountException() => context.appStrings.errorAlreadyExsist,
+                    _ => context.appStrings.errorGeneric,
+                  },
                 ),
-                shrinkWrap: true,
-                children: [
-                  NameField(
-                    name: SignUpBloc.nameFieldKey,
-                    disabled: state is SigningUpState,
-                  ),
-                  const SizedBox(height: 24.0),
-                  NameField(
-                    name: SignUpBloc.surnameFieldKey,
-                    hintText: context.appStrings.surnameLabel,
-                    disabled: state is SigningUpState,
-                  ),
-                  const SizedBox(height: 24.0),
-                  EmailField(
-                    name: SignUpBloc.emailFieldKey,
-                    disabled: state is SigningUpState,
-                    validators: [
-                      (val) {
-                        final emailConfirm = context.read<SignUpBloc>().emailConfirmField?.value;
-                        final email = context.read<SignUpBloc>().emailField?.value;
+              if (state is ErrorSignUpState) const SizedBox(height: 24.0),
+              NameField(
+                name: SignUpBloc.nameFieldKey,
+                disabled: state is SigningUpState,
+              ),
+              const SizedBox(height: 24.0),
+              NameField(
+                name: SignUpBloc.surnameFieldKey,
+                hintText: context.appStrings.surnameLabel,
+                disabled: state is SigningUpState,
+              ),
+              const SizedBox(height: 24.0),
+              EmailField(
+                name: SignUpBloc.emailFieldKey,
+                disabled: state is SigningUpState,
+                validators: [
+                  (val) {
+                    final emailConfirm = context.read<SignUpBloc>().emailConfirmField?.value;
+                    final email = context.read<SignUpBloc>().emailField?.value;
 
-                        if (emailConfirm != email) {
-                          return context.appStrings.registerErrorEmailMatch;
-                        }
+                    if (emailConfirm != email) {
+                      return context.appStrings.registerErrorEmailMatch;
+                    }
 
-                        return null;
-                      }
-                    ],
-                  ),
-                  const SizedBox(height: 24.0),
-                  EmailField(
-                    name: SignUpBloc.emailConfirmFieldKey,
-                    hintText: context.appStrings.emailConfirmLabel,
-                    disabled: state is SigningUpState,
-                    validators: [
-                      (val) {
-                        final emailConfirm = context.read<SignUpBloc>().emailConfirmField?.value;
-                        final email = context.read<SignUpBloc>().emailField?.value;
-
-                        if (emailConfirm != email) {
-                          return context.appStrings.registerErrorEmailMatch;
-                        }
-
-                        return null;
-                      }
-                    ],
-                  ),
-                  const SizedBox(height: 24.0),
-                  PasswordField(
-                    name: SignUpBloc.passwordFieldKey,
-                    disabled: state is SigningUpState,
-                    validators: [
-                      (val) {
-                        final passwordConfirm =
-                            context.read<SignUpBloc>().passwordConfirmField?.value;
-                        final password = context.read<SignUpBloc>().passwordField?.value;
-
-                        if (passwordConfirm != password) {
-                          return context.appStrings.registerErrorPasswordMatch;
-                        }
-
-                        return null;
-                      }
-                    ],
-                  ),
-                  const SizedBox(height: 24.0),
-                  PasswordField(
-                    name: SignUpBloc.passwordConfirmFieldKey,
-                    hintText: context.appStrings.passwordConfirmLabel,
-                    disabled: state is SigningUpState,
-                    validators: [
-                      (val) {
-                        final passwordConfirm =
-                            context.read<SignUpBloc>().passwordConfirmField?.value;
-                        final password = context.read<SignUpBloc>().passwordField?.value;
-
-                        if (passwordConfirm != password) {
-                          return context.appStrings.registerErrorPasswordMatch;
-                        }
-
-                        return null;
-                      }
-                    ],
-                  ),
-                  const SizedBox(height: 24.0),
-                  _SignUpButton(
-                    disabled: state is SigningUpState,
-                  ),
+                    return null;
+                  }
                 ],
               ),
-            );
-          },
+              const SizedBox(height: 24.0),
+              EmailField(
+                name: SignUpBloc.emailConfirmFieldKey,
+                hintText: context.appStrings.emailConfirmLabel,
+                disabled: state is SigningUpState,
+                validators: [
+                  (val) {
+                    final emailConfirm = context.read<SignUpBloc>().emailConfirmField?.value;
+                    final email = context.read<SignUpBloc>().emailField?.value;
+
+                    if (emailConfirm != email) {
+                      return context.appStrings.registerErrorEmailMatch;
+                    }
+
+                    return null;
+                  }
+                ],
+              ),
+              const SizedBox(height: 24.0),
+              PasswordField(
+                name: SignUpBloc.passwordFieldKey,
+                disabled: state is SigningUpState,
+                validators: [
+                  (val) {
+                    final passwordConfirm = context.read<SignUpBloc>().passwordConfirmField?.value;
+                    final password = context.read<SignUpBloc>().passwordField?.value;
+
+                    if (passwordConfirm != password) {
+                      return context.appStrings.registerErrorPasswordMatch;
+                    }
+
+                    return null;
+                  }
+                ],
+              ),
+              const SizedBox(height: 24.0),
+              PasswordField(
+                name: SignUpBloc.passwordConfirmFieldKey,
+                hintText: context.appStrings.passwordConfirmLabel,
+                disabled: state is SigningUpState,
+                validators: [
+                  (val) {
+                    final passwordConfirm = context.read<SignUpBloc>().passwordConfirmField?.value;
+                    final password = context.read<SignUpBloc>().passwordField?.value;
+
+                    if (passwordConfirm != password) {
+                      return context.appStrings.registerErrorPasswordMatch;
+                    }
+
+                    return null;
+                  }
+                ],
+              ),
+              const SizedBox(height: 24.0),
+              _SignUpButton(
+                disabled: state is SigningUpState,
+              ),
+            ],
+          ),
         ),
       );
 }

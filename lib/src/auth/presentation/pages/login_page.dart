@@ -10,6 +10,7 @@ import 'package:twelve_notes/src/auth/presentation/blocs/sign_in_bloc/sign_in_bl
 import 'package:twelve_notes/src/auth/presentation/widgets/email_field.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/image_background.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/password_field.dart';
+import 'package:twelve_notes/src/auth/presentation/widgets/reset_password_modal.dart';
 import 'package:twelve_notes/src/errors/errors.dart';
 import 'package:twelve_notes/src/misc/app_assets.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
@@ -241,7 +242,12 @@ class _ResetPassword extends StatelessWidget {
               Flexible(
                 fit: FlexFit.tight,
                 child: TextButton(
-                  onPressed: disabled ? null : () {},
+                  onPressed: disabled
+                      ? null
+                      : () => showDialog(
+                            context: context,
+                            builder: (context) => const ResetPasswordModal(),
+                          ),
                   child: Text(
                     context.appStrings.resetPswCta,
                     style: context.twelveStyle?.bodyMedium,

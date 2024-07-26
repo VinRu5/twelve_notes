@@ -255,7 +255,7 @@ class _SignUpButton extends StatelessWidget {
         child: FilledButton(
           key: registrationButtonKey,
           onPressed: disabled ? null : () => context.read<SignUpBloc>().onSignUp(),
-          child: disabled ? const CircularProgressIndicator() : Text(context.appStrings.ctaLogin),
+          child: disabled ? const CircularProgressIndicator() : Text(context.appStrings.ctaSignUp),
         ),
       );
 }

@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
 import 'package:twelve_notes/src/misc/constants.dart';
-import 'package:twelve_notes/src/theme/extension_theme.dart';
 import 'package:twelve_notes/src/theme/twelve_colors.dart';
 
 class PasswordField extends StatefulWidget {
@@ -72,16 +71,6 @@ class _PasswordFieldState extends State<PasswordField> {
                   size: 16.0,
                 ),
               ),
-            ],
-          ),
-          errorStyle: context.twelveStyle?.bodySmall.copyWith(
-            fontWeight: FontWeight.bold,
-            shadows: [
-              BoxShadow(
-                offset: Offset.fromDirection(1.0),
-                spreadRadius: 3.0,
-                color: Colors.black87,
-              )
             ],
           ),
         ),

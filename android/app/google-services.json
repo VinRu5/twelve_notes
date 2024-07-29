@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "97424430746",
+    "project_id": "twelve-notes",
+    "storage_bucket": "twelve-notes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97424430746:android:ce5f73a8471c9ec7167123",
+        "android_client_info": {
+          "package_name": "me.dev.vinrus.twelve_notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97424430746-557fejspjqd1j4ollgjgseiaeoi1m9hb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.dev.vinrus.twelve_notes",
+            "certificate_hash": "7deeed58ea0ce564751d41754235a9ad82b62e8a"
+          }
+        },
+        {
+          "client_id": "97424430746-2untdn92uh6lqkf8hn8lu4hdemnrbk7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWZRMVE2S3EIuZ4faLvOiVNe6zK514tOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97424430746-2untdn92uh6lqkf8hn8lu4hdemnrbk7m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "97424430746-eqh3paseftl6l6hbe9358qiabhl4bldr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.dev.vinrus.twelveNotes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

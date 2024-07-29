@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+.env/
 migrate_working_dir/
 
 # IntelliJ related
@@ -28,6 +29,11 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Firebase
+lib/firebase_options.dart
+saved-data/
+firebase-export-*/
+
 # FVM related
 .fvm/flutter_sdk
 /pubspec.lock
@@ -46,3 +52,4 @@ app.*.map.json
 /android/app/release
 
 devtools_options.yaml
+macos/Podfile.lock

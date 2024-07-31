@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,7 @@ void main() async {
   );
 
   await FirebaseAuth.instance.useAuthEmulator('127.0.0.1', 9099);
+  await FirebaseStorage.instance.useStorageEmulator('127.0.0.1', 8080);
 
   Bloc.observer = TalkerBlocObserver(
     talker: Talker(

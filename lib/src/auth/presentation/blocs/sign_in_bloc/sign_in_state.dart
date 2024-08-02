@@ -12,7 +12,7 @@ final class SignInInitial extends SignInState {}
 final class SigningInState extends SignInState {}
 
 class SuccessSignInState extends SignInState {
-  final UserCredential userCredential;
+  final auth.UserCredential userCredential;
 
   const SuccessSignInState({
     required this.userCredential,

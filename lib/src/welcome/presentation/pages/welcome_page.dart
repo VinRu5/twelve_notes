@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_button/sign_button.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
+import 'package:twelve_notes/src/auth/domain/repositories/user_repository.dart';
+import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:twelve_notes/src/misc/app_assets.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
@@ -25,6 +27,8 @@ class WelcomePage extends StatelessWidget implements AutoRouteWrapper {
           BlocProvider(
             create: (context) => SignInBloc(
               authenticationRepository: context.read<AuthenticationRepository>(),
+              authCubit: context.read<AuthCubit>(),
+              userRepository: context.read<UserRepository>(),
             ),
           ),
         ],
@@ -82,8 +86,12 @@ class WelcomePage extends StatelessWidget implements AutoRouteWrapper {
                 child: BlocConsumer<SignInBloc, SignInState>(
                     listener: (context, state) {
                       if (state is SuccessSignInState) {
-                        //TODO(Vincenzo): controllare il comportamento dell'auth e modificare
-                        context.router.navigate(const MainRoute());
+                        // //TODO(Vincenzo): controllare il comportamento dell'auth e modificare
+                        // context.router.navigate(const MainRoute());
+
+                        context.router.replaceAll([
+                          const MainRoute(),
+                        ]);
                       }
                     },
                     builder: (context, state) => switch (state) {

@@ -1,11 +1,14 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:twelve_notes/src/auth/domain/models/user.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
+import 'package:twelve_notes/src/auth/domain/repositories/user_repository.dart';
+import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';
@@ -19,6 +22,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   static const passwordConfirmFieldKey = 'passwordConfirm';
 
   final AuthenticationRepository authenticationRepository;
+  final AuthCubit authCubit;
+  final UserRepository userRepository;
 
   final formKey = GlobalKey<FormBuilderState>();
 
@@ -31,6 +36,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
   SignUpBloc({
     required this.authenticationRepository,
+    required this.authCubit,
+    required this.userRepository,
   }) : super(SignUpInitial()) {
     on<PerformSignUpEvent>(_onPerformSignUp);
   }
@@ -40,6 +47,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
     final String email = emailField?.value;
     final String password = passwordField?.value;
+
+    final authSubscription = authCubit.stream
+        .where(
+          (state) => state is AuthenticatedState,
+        )
+        .listen(
+          (state) => _updateUserProfile(event, state: state as AuthenticatedState),
+        );
 
     try {
       final userCredentials = await authenticationRepository.signUp(email, password);
@@ -51,6 +66,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       );
     } catch (e) {
       emit(ErrorSignUpState(error: e));
+    } finally {
+      authSubscription.cancel();
     }
   }
 
@@ -62,5 +79,27 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     if (isValid ?? false) {
       signUp();
     }
+  }
+
+  _updateUserProfile(
+    PerformSignUpEvent event, {
+    required AuthenticatedState state,
+  }) async {
+    final auth.User authUser = state.user;
+
+    final firstName = nameField?.value;
+    final lastName = surnameField?.value;
+
+    await userRepository.create(
+      User(
+        id: authUser.uid,
+        firstName: firstName,
+        lastName: lastName,
+        favouriteSongs: const [],
+        playlists: const [],
+      ),
+    );
+
+    await authUser.updateDisplayName('$firstName $lastName');
   }
 }

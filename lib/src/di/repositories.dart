@@ -7,4 +7,10 @@ final List<SingleChildWidget> repositories = [
       googleSignIn: context.read<GoogleSignIn>(),
     ),
   ),
+  RepositoryProvider(
+    create: (context) => UserRepository(
+      firebaseFirestore: context.read<FirebaseFirestore>(),
+      userAdapter: context.read<UserAdapter>(),
+    ),
+  ),
 ];

@@ -6,6 +6,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
+import 'package:twelve_notes/src/auth/domain/repositories/user_repository.dart';
+import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/email_field.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/image_background.dart';
@@ -29,6 +31,8 @@ class LoginPage extends StatelessWidget implements AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) => BlocProvider(
         create: (context) => SignInBloc(
           authenticationRepository: context.read<AuthenticationRepository>(),
+          authCubit: context.read<AuthCubit>(),
+          userRepository: context.read<UserRepository>(),
         ),
         child: this,
       );

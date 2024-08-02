@@ -1,9 +1,9 @@
 part of 'dependency_injector.dart';
 
 final List<SingleChildWidget> datasources = [
-  // Provider<FirebaseFirestore>(
-  //   create: (_) => FirebaseFirestore.instance,
-  // ),
+  Provider<FirebaseFirestore>(
+    create: (_) => FirebaseFirestore.instance,
+  ),
   Provider<FirebaseAuth>(
     create: (_) => FirebaseAuth.instance,
   ),

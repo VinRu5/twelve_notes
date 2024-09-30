@@ -1,11 +1,10 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart' as auth;
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+// import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:twelve_notes/src/auth/domain/models/user.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/user_repository.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.dart';
@@ -45,30 +44,30 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   FutureOr<void> _onPerformSignUp(PerformSignUpEvent event, Emitter<SignUpState> emit) async {
     emit(SigningUpState());
 
-    final String email = emailField?.value;
-    final String password = passwordField?.value;
+    // final String email = emailField?.value;
+    // final String password = passwordField?.value;
 
-    final authSubscription = authCubit.stream
-        .where(
-          (state) => state is AuthenticatedState,
-        )
-        .listen(
-          (state) => _updateUserProfile(event, state: state as AuthenticatedState),
-        );
+    // final authSubscription = authCubit.stream
+    //     .where(
+    //       (state) => state is AuthenticatedState,
+    //     )
+    //     .listen(
+    //       (state) => _updateUserProfile(event, state: state as AuthenticatedState),
+    //     );
 
-    try {
-      final userCredentials = await authenticationRepository.signUp(email, password);
+    // try {
+    //   final userCredentials = await authenticationRepository.signUp(email, password);
 
-      emit(
-        SuccessSignUpState(
-          userCredential: userCredentials,
-        ),
-      );
-    } catch (e) {
-      emit(ErrorSignUpState(error: e));
-    } finally {
-      authSubscription.cancel();
-    }
+    //   emit(
+    //     SuccessSignUpState(
+    //       userCredential: userCredentials,
+    //     ),
+    //   );
+    // } catch (e) {
+    //   emit(ErrorSignUpState(error: e));
+    // } finally {
+    //   authSubscription.cancel();
+    // }
   }
 
   void signUp() => add(PerformSignUpEvent());
@@ -85,21 +84,21 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     PerformSignUpEvent event, {
     required AuthenticatedState state,
   }) async {
-    final auth.User authUser = state.user;
+    // final auth.User authUser = state.user;
 
-    final firstName = nameField?.value;
-    final lastName = surnameField?.value;
+    // final firstName = nameField?.value;
+    // final lastName = surnameField?.value;
 
-    await userRepository.create(
-      User(
-        id: authUser.uid,
-        firstName: firstName,
-        lastName: lastName,
-        favouriteSongs: const [],
-        playlists: const [],
-      ),
-    );
+    // await userRepository.create(
+    //   User(
+    //     id: authUser.uid,
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     favouriteSongs: const [],
+    //     playlists: const [],
+    //   ),
+    // );
 
-    await authUser.updateDisplayName('$firstName $lastName');
+    // await authUser.updateDisplayName('$firstName $lastName');
   }
 }

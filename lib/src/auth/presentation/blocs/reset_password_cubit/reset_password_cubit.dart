@@ -1,6 +1,6 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
 
@@ -23,7 +23,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     final isValid = formKey.currentState?.saveAndValidate();
 
     if ((isValid ?? false) && resetEmailField != null) {
-      await authenticationRepository.resetPassword(resetEmailField.value);
+      // await authenticationRepository.resetPassword(resetEmailField.value);
 
       return true;
     }

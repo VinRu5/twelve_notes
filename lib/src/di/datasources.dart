@@ -1,12 +1,12 @@
 part of 'dependency_injector.dart';
 
 final List<SingleChildWidget> datasources = [
-  Provider<FirebaseFirestore>(
-    create: (_) => FirebaseFirestore.instance,
-  ),
-  Provider<FirebaseAuth>(
-    create: (_) => FirebaseAuth.instance,
-  ),
+  // Provider<FirebaseFirestore>(
+  //   create: (_) => FirebaseFirestore.instance,
+  // ),
+  // Provider<FirebaseAuth>(
+  //   create: (_) => FirebaseAuth.instance,
+  // ),
   // Iniezione di Google Sign In
   Provider<GoogleSignIn>(
     create: (_) => GoogleSignIn(

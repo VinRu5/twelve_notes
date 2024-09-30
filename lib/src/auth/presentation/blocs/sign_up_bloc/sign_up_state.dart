@@ -12,16 +12,16 @@ final class SignUpInitial extends SignUpState {}
 final class SigningUpState extends SignUpState {}
 
 final class SuccessSignUpState extends SignUpState {
-  final auth.UserCredential userCredential;
+  // final auth.UserCredential userCredential;
 
-  const SuccessSignUpState({
-    required this.userCredential,
-  });
+  // const SuccessSignUpState({
+  //   required this.userCredential,
+  // });
 
-  @override
-  List<Object> get props => [
-        userCredential,
-      ];
+  // @override
+  // List<Object> get props => [
+  //       userCredential,
+  //     ];
 }
 
 final class ErrorSignUpState extends SignUpState {

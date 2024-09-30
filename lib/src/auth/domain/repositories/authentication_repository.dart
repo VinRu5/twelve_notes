@@ -1,16 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:twelve_notes/src/errors/errors.dart';
 
 class AuthenticationRepository {
-  final FirebaseAuth _firebaseAuth;
+  // final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
   AuthenticationRepository({
-    required FirebaseAuth firebaseAuth,
+    // required FirebaseAuth firebaseAuth,
     required GoogleSignIn googleSignIn,
-  })  : _firebaseAuth = firebaseAuth,
+  }) :
+        // _firebaseAuth = firebaseAuth,
         _googleSignIn = googleSignIn;
 
   static const _userNotFoundKey = 'user-not-found';
@@ -18,6 +17,7 @@ class AuthenticationRepository {
   static const _weakPasswordKey = 'weak-password';
   static const _emailAlreadyInUseKey = 'email-already-in-use';
 
+/*
   Future<UserCredential> signInWithEmail(String email, String password) async {
     try {
       return await _firebaseAuth.signInWithEmailAndPassword(
@@ -88,4 +88,5 @@ class AuthenticationRepository {
 
   Future<void> resetPassword(String email) async =>
       await _firebaseAuth.sendPasswordResetEmail(email: email);
+      */
 }

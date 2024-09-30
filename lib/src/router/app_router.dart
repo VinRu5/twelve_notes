@@ -9,7 +9,7 @@ import 'package:twelve_notes/src/welcome/presentation/pages/welcome_page.dart';
 part 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: "Page,Route")
-class AppRouter extends _$AppRouter implements AutoRouteGuard {
+class AppRouter extends RootStackRouter {
   final AuthCubit _authCubit;
 
   AppRouter({
@@ -25,14 +25,33 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         WelcomeRoute.name,
       ].contains(route);
 
+  // @override
+  // void onNavigation(NavigationResolver resolver, StackRouter router) {
+  //   if (_authCubit.isAuthenticated || _notGuardingRoute(resolver.route.name)) {
+  //     resolver.next();
+  //   } else {
+  //     resolver.redirect(const WelcomeRoute());
+  //   }
+  // }
+
   @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (_authCubit.isAuthenticated || _notGuardingRoute(resolver.route.name)) {
-      resolver.next();
-    } else {
-      resolver.redirect(const WelcomeRoute());
-    }
-  }
+  List<AutoRouteGuard> get guards => [
+        AutoRouteGuard.simple((NavigationResolver resolver, StackRouter router) {
+          if (_authCubit.isAuthenticated || _notGuardingRoute(resolver.route.name)) {
+            resolver.next();
+          } else {
+            resolver.redirect(const WelcomeRoute());
+          }
+        }),
+
+        // AutoRouteGuard.redirect((NavigationResolver resolver) {
+        //   if (_authCubit.isAuthenticated || _notGuardingRoute(resolver.route.name)) {
+        //     return const WelcomeRoute();
+        //   }
+
+        //   return null;
+        // }),
+      ];
 
   @override
   List<AutoRoute> get routes => [

@@ -1,15 +1,13 @@
 import 'dart:async';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart' as auth;
+// import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:twelve_notes/src/auth/domain/models/user.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/user_repository.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.dart';
-import 'package:twelve_notes/src/auth/utils/extensions/user_first_last_name.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
@@ -42,23 +40,23 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     Emitter<SignInState> emit,
   ) async {
     emit(SigningInState());
-    try {
-      final String email = emailField?.value;
-      final String password = passwordField?.value;
+    // try {
+    //   final String email = emailField?.value;
+    //   final String password = passwordField?.value;
 
-      final auth.UserCredential userCredential = await authenticationRepository.signInWithEmail(
-        email,
-        password,
-      );
+    //   final auth.UserCredential userCredential = await authenticationRepository.signInWithEmail(
+    //     email,
+    //     password,
+    //   );
 
-      emit(
-        SuccessSignInState(userCredential: userCredential),
-      );
-    } catch (e) {
-      emit(
-        ErrorSignInState(exception: e),
-      );
-    }
+    //   emit(
+    //     SuccessSignInState(userCredential: userCredential),
+    //   );
+    // } catch (e) {
+    //   emit(
+    //     ErrorSignInState(exception: e),
+    //   );
+    // }
   }
 
   FutureOr<void> _onPerformSignInGoogle(
@@ -67,26 +65,26 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   ) async {
     emit(SigningInState());
 
-    final authSubscription = authCubit.stream
-        .where(
-          (state) => state is AuthenticatedState,
-        )
-        .listen(
-          (state) => _updateUserProfile(state: state as AuthenticatedState),
-        );
+    // final authSubscription = authCubit.stream
+    //     .where(
+    //       (state) => state is AuthenticatedState,
+    //     )
+    //     .listen(
+    //       (state) => _updateUserProfile(state: state as AuthenticatedState),
+    //     );
 
-    try {
-      final auth.UserCredential userCredential = await authenticationRepository.signInWithGoogle();
-      emit(
-        SuccessSignInState(userCredential: userCredential),
-      );
-    } catch (e) {
-      emit(
-        ErrorSignInState(exception: e),
-      );
-    } finally {
-      authSubscription.cancel();
-    }
+    // try {
+    //   final auth.UserCredential userCredential = await authenticationRepository.signInWithGoogle();
+    //   emit(
+    //     SuccessSignInState(userCredential: userCredential),
+    //   );
+    // } catch (e) {
+    //   emit(
+    //     ErrorSignInState(exception: e),
+    //   );
+    // } finally {
+    //   authSubscription.cancel();
+    // }
   }
 
   FutureOr<void> _onPerformSignInApple(
@@ -95,26 +93,26 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   ) async {
     emit(SigningInState());
 
-    final authSubscription = authCubit.stream
-        .where(
-          (state) => state is AuthenticatedState,
-        )
-        .listen(
-          (state) => _updateUserProfile(state: state as AuthenticatedState),
-        );
+    // final authSubscription = authCubit.stream
+    //     .where(
+    //       (state) => state is AuthenticatedState,
+    //     )
+    //     .listen(
+    //       (state) => _updateUserProfile(state: state as AuthenticatedState),
+    //     );
 
-    try {
-      final auth.UserCredential userCredential = await authenticationRepository.signInWithApple();
-      emit(
-        SuccessSignInState(userCredential: userCredential),
-      );
-    } catch (e) {
-      emit(
-        ErrorSignInState(exception: e),
-      );
-    } finally {
-      authSubscription.cancel();
-    }
+    // try {
+    //   final auth.UserCredential userCredential = await authenticationRepository.signInWithApple();
+    //   emit(
+    //     SuccessSignInState(userCredential: userCredential),
+    //   );
+    // } catch (e) {
+    //   emit(
+    //     ErrorSignInState(exception: e),
+    //   );
+    // } finally {
+    //   authSubscription.cancel();
+    // }
   }
 
   void signInWithEmail() => add(
@@ -136,19 +134,19 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   _updateUserProfile({
     required AuthenticatedState state,
   }) async {
-    final auth.User authUser = state.user;
+    // final auth.User authUser = state.user;
 
-    final firstName = authUser.firstName;
-    final lastName = authUser.lastName;
+    // final firstName = authUser.firstName;
+    // final lastName = authUser.lastName;
 
-    await userRepository.create(
-      User(
-        id: authUser.uid,
-        firstName: firstName,
-        lastName: lastName,
-        favouriteSongs: const [],
-        playlists: const [],
-      ),
-    );
+    // await userRepository.create(
+    //   User(
+    //     id: authUser.uid,
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     favouriteSongs: const [],
+    //     playlists: const [],
+    //   ),
+    // );
   }
 }

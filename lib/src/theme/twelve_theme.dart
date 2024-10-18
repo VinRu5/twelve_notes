@@ -24,6 +24,7 @@ class TwelveTheme {
         searchBarTheme: _searchBarThemeDataLight,
         searchViewTheme: _searchViewThemeDataLight,
         chipTheme: _chipThemeDataLight,
+        cardTheme: _cardThemeDataLight,
       );
 
   static ThemeData get dark => ThemeData(
@@ -45,6 +46,7 @@ class TwelveTheme {
         searchBarTheme: _searchBarThemeDataDark,
         searchViewTheme: _searchViewThemeDataDark,
         chipTheme: _chipThemeDataDark,
+        cardTheme: _cardThemeDataDark,
       );
 
   static final TwelveTypographyExtension _typographyLight =
@@ -61,10 +63,9 @@ class TwelveTheme {
     onSecondary: TwelveColors.textLight,
     error: TwelveColors.error,
     onError: TwelveColors.textDark,
-    background: TwelveColors.bgLight,
-    onBackground: TwelveColors.textLight,
-    surface: TwelveColors.surfaceLight,
+    surface: TwelveColors.bgLight,
     onSurface: TwelveColors.textLight,
+    surfaceContainerHighest: TwelveColors.surfaceLight,
     outline: TwelveColors.primary,
   );
   static const ColorScheme _colorSchemeDark = ColorScheme(
@@ -75,10 +76,9 @@ class TwelveTheme {
     onSecondary: TwelveColors.textDark,
     error: TwelveColors.error,
     onError: TwelveColors.textDark,
-    background: TwelveColors.bgDark,
-    onBackground: TwelveColors.textDark,
-    surface: TwelveColors.surfaceDark,
+    surface: TwelveColors.bgDark,
     onSurface: TwelveColors.textDark,
+    surfaceContainerHighest: TwelveColors.surfaceDark,
     outline: TwelveColors.primary,
   );
 
@@ -87,12 +87,24 @@ class TwelveTheme {
   );
 
   static const AppBarTheme _appBarThemeLight = AppBarTheme(
+    surfaceTintColor: TwelveColors.bgLight,
     color: TwelveColors.bgLight,
     centerTitle: true,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(24.0),
+      ),
+    ),
   );
   static const AppBarTheme _appBarThemeDark = AppBarTheme(
+    surfaceTintColor: TwelveColors.bgDark,
     color: TwelveColors.bgDark,
     centerTitle: true,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(32),
+      ),
+    ),
   );
 
   static const NavigationBarThemeData _navigationBarThemeLight = NavigationBarThemeData(
@@ -111,16 +123,16 @@ class TwelveTheme {
   static final FilledButtonThemeData _filledButtonThemeDataLight = FilledButtonThemeData(
     style: FilledButton.styleFrom(
       textStyle: _typographyLight.buttonText,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
   static final FilledButtonThemeData _filledButtonThemeDataDark = FilledButtonThemeData(
     style: FilledButton.styleFrom(
       textStyle: _typographyDark.buttonText,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -128,16 +140,16 @@ class TwelveTheme {
   static final ElevatedButtonThemeData _elevatedButtonThemeDataLight = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       textStyle: _typographyLight.buttonText,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
   static final ElevatedButtonThemeData _elevatedButtonThemeDataDark = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       textStyle: _typographyDark.buttonText,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -145,16 +157,16 @@ class TwelveTheme {
   static final TextButtonThemeData _textButtonThemeDataLight = TextButtonThemeData(
     style: TextButton.styleFrom(
       textStyle: _typographyLight.buttonText,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
   static final TextButtonThemeData _textButtonThemeDataDark = TextButtonThemeData(
     style: TextButton.styleFrom(
       textStyle: _typographyDark.buttonText,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -162,16 +174,16 @@ class TwelveTheme {
   static final OutlinedButtonThemeData _outlinedButtonThemeDataLight = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       textStyle: _typographyLight.buttonText,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
   static final OutlinedButtonThemeData _outlinedButtonThemeDataDark = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       textStyle: _typographyDark.buttonText,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(32.0),
       ),
     ),
   );
@@ -188,39 +200,41 @@ class TwelveTheme {
     ),
   );
 
-  static const InputDecorationTheme _inputDecorationThemeLight = InputDecorationTheme(
-    border: OutlineInputBorder(
+  static final InputDecorationTheme _inputDecorationThemeLight = InputDecorationTheme(
+    border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(24.0)),
     ),
     filled: true,
+    errorStyle: _typographyLight.errorStyle,
   );
-  static const InputDecorationTheme _inputDecorationThemeDark = InputDecorationTheme(
-    border: OutlineInputBorder(
+  static final InputDecorationTheme _inputDecorationThemeDark = InputDecorationTheme(
+    border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(24.0)),
     ),
     filled: true,
+    errorStyle: _typographyDark.errorStyle,
   );
 
   static const SearchBarThemeData _searchBarThemeDataLight = SearchBarThemeData(
-    backgroundColor: MaterialStatePropertyAll(TwelveColors.surfaceLight),
-    shadowColor: MaterialStatePropertyAll(TwelveColors.primary),
-    surfaceTintColor: MaterialStatePropertyAll(Colors.white54),
-    shape: MaterialStatePropertyAll(
-      RoundedRectangleBorder(
+    backgroundColor: WidgetStatePropertyAll(TwelveColors.surfaceLight),
+    shadowColor: WidgetStatePropertyAll(TwelveColors.primary),
+    surfaceTintColor: WidgetStatePropertyAll(Colors.white54),
+    shape: WidgetStatePropertyAll(
+      ContinuousRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(24.0),
+          Radius.circular(40.0),
         ),
       ),
     ),
   );
   static const SearchBarThemeData _searchBarThemeDataDark = SearchBarThemeData(
-    backgroundColor: MaterialStatePropertyAll(TwelveColors.surfaceDark),
-    shadowColor: MaterialStatePropertyAll(TwelveColors.primary),
-    surfaceTintColor: MaterialStatePropertyAll(TwelveColors.surfaceLight),
-    shape: MaterialStatePropertyAll(
-      RoundedRectangleBorder(
+    backgroundColor: WidgetStatePropertyAll(TwelveColors.surfaceDark),
+    shadowColor: WidgetStatePropertyAll(TwelveColors.primary),
+    surfaceTintColor: WidgetStatePropertyAll(TwelveColors.surfaceLight),
+    shape: WidgetStatePropertyAll(
+      ContinuousRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(24.0),
+          Radius.circular(40.0),
         ),
       ),
     ),
@@ -242,5 +256,22 @@ class TwelveTheme {
   static const ChipThemeData _chipThemeDataDark = ChipThemeData(
     selectedColor: TwelveColors.primary,
     showCheckmark: false,
+  );
+
+  static const CardTheme _cardThemeDataLight = CardTheme(
+    color: TwelveColors.surfaceLight,
+    shape: ContinuousRectangleBorder(
+      borderRadius: BorderRadius.all(
+        Radius.circular(40.0),
+      ),
+    ),
+  );
+  static const CardTheme _cardThemeDataDark = CardTheme(
+    color: TwelveColors.surfaceDark,
+    shape: ContinuousRectangleBorder(
+      borderRadius: BorderRadius.all(
+        Radius.circular(40.0),
+      ),
+    ),
   );
 }

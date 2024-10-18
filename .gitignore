@@ -9,6 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
+.environment/
 
 # IntelliJ related
 *.iml
@@ -29,7 +30,6 @@ migrate_working_dir/
 /build/
 
 # FVM related
-.fvm/flutter_sdk
 /pubspec.lock
 
 ios/Podfile.lock
@@ -46,3 +46,6 @@ app.*.map.json
 /android/app/release
 
 devtools_options.yaml
+
+# FVM Version Cache
+.fvm/

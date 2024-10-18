@@ -6,7 +6,9 @@ class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
   @override
-  Widget build(BuildContext context) => const Center(
-        child: Text('Welcome'),
+  Widget build(BuildContext context) => Scaffold(
+        body: const Center(
+          child: Text('Welcome'),
+        ),
       );
 }

@@ -31,5 +31,18 @@
   "resetPswModalCta": "Send email",
   "errorWrongPassword": "The password must contain: 1 uppercase letter, 1 lowercase letter, 1 symbol, 1 number, and be at least 8 characters long.",
   "errorAlreadyExsist": "This email is already registered. Please try another one.",
-  "errorGeneric": "An error has occurred. Please try again."
+  "errorGeneric": "An error has occurred. Please try again.",
+  "confirmSignUpTitle": "Sign up Confirmed!",
+  "errorSignUpTitle": "Sign up Error!",
+  "confirmSignUpMessage": "Check your email to {email} confirm your registration.",
+  "@confirmSignUpMessage": {
+    "placeholders": {
+      "email": {
+        "type": "String",
+        "example": "ciao@mail.it"
+      }
+    }
+  },
+  "errorSignUpMessage": "There was an error during registration. Please start again.",
+  "startAgainButton": "Start again"
 }

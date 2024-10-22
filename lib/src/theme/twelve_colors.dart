@@ -13,6 +13,7 @@ class TwelveColors {
   static const textLabelLight = Color(0xFF6c757d);
   static const textLabelDark = Color(0xFFadb5bd);
   static const error = Color(0xFFE16162);
+  static const success = Color(0xFF81b336);
   static const surfaceLight = Color(0xFFFFFFFF);
   static const surfaceDark = Color(0xFF393E46);
 }

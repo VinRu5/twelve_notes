@@ -1,16 +1,6 @@
 part of 'dependency_injector.dart';
 
-final List<SingleChildWidget> datasources = [
-  Provider<SupabaseClient>(
-    create: (_) => Supabase.instance.client,
-  ),
-
-  // Provider<FirebaseFirestore>(
-  //   create: (_) => FirebaseFirestore.instance,
-  // ),
-  // Provider<FirebaseAuth>(
-  //   create: (_) => FirebaseAuth.instance,
-  // ),
+final List<SingleChildWidget> services = [
   // Iniezione di Google Sign In
   Provider<GoogleSignIn>(
     create: (_) => GoogleSignIn(
@@ -27,9 +17,9 @@ final List<SingleChildWidget> datasources = [
   //   ),
   // ),
 
-  // Provider<AuthenticationService>(
-  //   create: (_) => AuthenticationService(
-  //     supabase: Supabase.instance.client,
-  //   ),
-  // ),
+  Provider<AuthenticationService>(
+    create: (context) => AuthenticationService(
+      supabase: context.read<SupabaseClient>(),
+    ),
+  ),
 ];

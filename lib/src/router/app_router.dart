@@ -1,4 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/widgets.dart';
+import 'package:twelve_notes/src/auth/presentation/pages/sign_up_page.dart';
+import 'package:twelve_notes/src/presentation/pages/confirm_page.dart';
 import 'package:twelve_notes/src/welcome/presentation/pages/welcome_page.dart';
 
 part 'app_router.gr.dart';
@@ -54,7 +57,8 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         // AutoRoute(page: MainRoute.page),
         // AutoRoute(page: LoginRoute.page),
-        // AutoRoute(page: RegistrationRoute.page),
-        AutoRoute(page: WelcomeRoute.page, initial: true),
+        AutoRoute(page: SignUpRoute.page, initial: true),
+        AutoRoute(page: WelcomeRoute.page),
+        AutoRoute(page: ConfirmRoute.page),
       ];
 }

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:twelve_notes/src/auth/data/mappers/session_mapper.dart';
+import 'package:twelve_notes/src/auth/data/mappers/user_mapper.dart';
+import 'package:twelve_notes/src/auth/data/services/authentication_service.dart';
+import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
 
-part 'adapters.dart';
 part 'blocs.dart';
-part 'datasources.dart';
 part 'repositories.dart';
+part 'services.dart';
 
 class DependencyInjector extends StatelessWidget {
   final Widget child;
@@ -18,9 +22,14 @@ class DependencyInjector extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => MultiProvider(
-        providers: datasources,
-        child: child,
+  Widget build(BuildContext context) => Provider<SupabaseClient>(
+        create: (_) => Supabase.instance.client,
+        child: MultiProvider(
+            providers: services,
+            child: MultiRepositoryProvider(
+              providers: repositories,
+              child: child,
+            )),
       );
 
   // MultiProvider(

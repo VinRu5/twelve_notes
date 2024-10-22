@@ -112,7 +112,7 @@ class WelcomeRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const WelcomePage();
+      return WrappedRoute(child: const WelcomePage());
     },
   );
 }

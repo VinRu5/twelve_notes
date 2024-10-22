@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
-import 'package:twelve_notes/src/auth/presentation/blocs/sign_up_bloc.dart';
+import 'package:twelve_notes/src/auth/presentation/blocs/sign_up_bloc/sign_up_bloc.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/email_field.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/image_background.dart';
 import 'package:twelve_notes/src/auth/presentation/widgets/password_field.dart';

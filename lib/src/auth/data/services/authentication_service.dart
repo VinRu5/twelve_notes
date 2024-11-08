@@ -58,4 +58,8 @@ class AuthenticationService {
         email: email,
         password: password,
       );
+
+  Future<void> signOut() => _supabase.auth.signOut();
+
+  Stream<AuthState> get onAuthStateChange => _supabase.auth.onAuthStateChange;
 }

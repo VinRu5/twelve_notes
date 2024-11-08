@@ -6,11 +6,10 @@ final List<SingleChildWidget> blocs = [
   //     preferencesDatasource: context.read<SharedPreferencesDatasource>(),
   //   )..init(),
   // ),
-  // BlocProvider<AuthCubit>(
-  //   create: (context) => AuthCubit(
-  //       // firebaseAuth: context.read<FirebaseAuth>(),
-  //       // talker: context.read<Talker>(),
-  //       ),
-  // ),
+  BlocProvider<AuthCubit>(
+    create: (context) => AuthCubit(
+      authRepository: context.read<AuthenticationRepository>(),
+    ),
+  ),
   // BlocProvider(create: (_) => SearchCubit()),
 ];

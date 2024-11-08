@@ -115,4 +115,8 @@ class AuthenticationRepository {
       password: password,
     );
   }
+
+  Future<void> signOut() => _authService.signOut();
+
+  Stream<AuthState> get onAuthStateChange => _authService.onAuthStateChange;
 }

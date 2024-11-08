@@ -93,11 +93,11 @@ class _FormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocConsumer<SignInBloc, SignInState>(
         listener: (context, state) {
-          // if (state is SuccessSignInState) {
-          //   context.router.replaceAll([
-          //     const MainRoute(),
-          //   ]);
-          // }
+          if (state is SuccessSignInState) {
+            context.router.replaceAll([
+              const MainRoute(),
+            ]);
+          }
         },
         builder: (context, state) => ListView(
           children: [

@@ -8,6 +8,7 @@ import 'package:twelve_notes/src/auth/data/mappers/session_mapper.dart';
 import 'package:twelve_notes/src/auth/data/mappers/user_mapper.dart';
 import 'package:twelve_notes/src/auth/data/services/authentication_service.dart';
 import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
+import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.dart';
 
 part 'blocs.dart';
 part 'repositories.dart';
@@ -25,24 +26,14 @@ class DependencyInjector extends StatelessWidget {
   Widget build(BuildContext context) => Provider<SupabaseClient>(
         create: (_) => Supabase.instance.client,
         child: MultiProvider(
-            providers: services,
-            child: MultiRepositoryProvider(
-              providers: repositories,
+          providers: services,
+          child: MultiRepositoryProvider(
+            providers: repositories,
+            child: MultiBlocProvider(
+              providers: blocs,
               child: child,
-            )),
+            ),
+          ),
+        ),
       );
-
-  // MultiProvider(
-  //       providers: adapters,
-  //       child: MultiProvider(
-  //         providers: datasources,
-  //         child: MultiRepositoryProvider(
-  //           providers: repositories,
-  //           child: MultiBlocProvider(
-  //             providers: blocs,
-  //             child: child,
-  //           ),
-  //         ),
-  //       ),
-  //     );
 }

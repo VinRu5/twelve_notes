@@ -43,7 +43,7 @@ class SignUpPage extends StatelessWidget implements AutoRouteWrapper {
               padding: const EdgeInsets.only(right: 8.0),
               child: IconButton(
                 iconSize: 18.0,
-                onPressed: () {}, //() => context.router.navigate(const WelcomeRoute()),
+                onPressed: () => context.router.navigate(const WelcomeRoute()),
                 icon: const FaIcon(
                   FontAwesomeIcons.xmark,
                 ),

@@ -27,4 +27,26 @@ class AuthenticationService {
       rethrow;
     }
   }
+
+  Future<AuthResponse> googleSignIn({
+    required String idToken,
+    required String accessToken,
+  }) =>
+      _supabase.auth.signInWithIdToken(
+        provider: OAuthProvider.google,
+        idToken: idToken,
+        accessToken: accessToken,
+      );
+
+  Future<AuthResponse> signInWithApple({
+    required String idToken,
+    required String rawNonce,
+  }) =>
+      _supabase.auth.signInWithIdToken(
+        provider: OAuthProvider.apple,
+        idToken: idToken,
+        nonce: rawNonce,
+      );
+
+  String generateRawNonce() => _supabase.auth.generateRawNonce();
 }

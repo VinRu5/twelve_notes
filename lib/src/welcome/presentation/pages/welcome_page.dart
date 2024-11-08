@@ -1,12 +1,15 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_button/sign_button.dart';
+import 'package:twelve_notes/src/auth/domain/repositories/authentication_repository.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:twelve_notes/src/misc/app_assets.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
 import 'package:twelve_notes/src/presentation/widgets/loader.dart';
+import 'package:twelve_notes/src/router/app_router.dart';
 import 'package:twelve_notes/src/theme/extension_theme.dart';
 import 'package:twelve_notes/src/welcome/presentation/blocs/animated_container_cubit/animated_container_cubit.dart';
 
@@ -22,10 +25,10 @@ class WelcomePage extends StatelessWidget implements AutoRouteWrapper {
           ),
           BlocProvider(
             create: (context) => SignInBloc(
-                // authenticationRepository: context.read<AuthenticationRepository>(),
-                // authCubit: context.read<AuthCubit>(),
-                // userRepository: context.read<UserRepository>(),
-                ),
+              authenticationRepository: context.read<AuthenticationRepository>(),
+              // authCubit: context.read<AuthCubit>(),
+              // userRepository: context.read<UserRepository>(),
+            ),
           ),
         ],
         child: this,
@@ -202,32 +205,32 @@ class _SignInContent extends StatelessWidget {
           ),
           SignInButton(
             buttonType: ButtonType.googleDark,
-            onPressed: () {}, //() => context.read<SignInBloc>().signInWithGoogle(),
+            onPressed: () => context.read<SignInBloc>().signInWithGoogle(),
             shape: const ContinuousRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(32.0),
               ),
             ),
           ),
-          SignInButton(
-            buttonType: ButtonType.appleDark,
-            onPressed: () {},
-            //() => context.read<SignInBloc>().signInWithApple(),
-            shape: const ContinuousRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(32.0),
+          if (defaultTargetPlatform == TargetPlatform.iOS ||
+              defaultTargetPlatform == TargetPlatform.macOS)
+            SignInButton(
+              buttonType: ButtonType.appleDark,
+              onPressed: () => context.read<SignInBloc>().signInWithApple(),
+              shape: const ContinuousRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(32.0),
+                ),
               ),
             ),
-          ),
           Text(
             context.appStrings.or,
             style: context.twelveStyle?.titleColorSmall,
           ),
           OutlinedButton(
-            onPressed: () {},
-            // () => context.router.navigate(
-            //   const RegistrationRoute(),
-            // ),
+            onPressed: () => context.router.navigate(
+              const SignUpRoute(),
+            ),
             child: Text(
               context.appStrings.signUpCta,
             ),

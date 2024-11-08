@@ -11,3 +11,5 @@ class WrongPasswordException implements Exception {}
 class AlreadyExistingAccountException implements Exception {}
 
 class WrongCredentialException implements Exception {}
+
+class GoogleOAuthException implements Exception {}

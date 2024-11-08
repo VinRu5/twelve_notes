@@ -49,4 +49,13 @@ class AuthenticationService {
       );
 
   String generateRawNonce() => _supabase.auth.generateRawNonce();
+
+  Future<AuthResponse> signIn({
+    required String email,
+    required String password,
+  }) =>
+      _supabase.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
 }

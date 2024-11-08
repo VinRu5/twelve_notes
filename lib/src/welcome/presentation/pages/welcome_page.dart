@@ -191,10 +191,7 @@ class _SignInContent extends StatelessWidget {
           const SizedBox(height: 16.0),
           SignInButton(
             buttonType: ButtonType.mail,
-            onPressed: () {},
-            // () => context.router.navigate(
-            //   const LoginRoute(),
-            // ),
+            onPressed: () => context.router.navigate(const SignInRoute()),
             btnColor: context.colorScheme.primary,
             btnTextColor: context.colorScheme.onPrimary,
             shape: const ContinuousRectangleBorder(

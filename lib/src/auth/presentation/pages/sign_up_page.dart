@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,9 +14,6 @@ import 'package:twelve_notes/src/misc/app_localization_extension.dart';
 import 'package:twelve_notes/src/misc/responsive_builder.dart';
 import 'package:twelve_notes/src/presentation/widgets/twelve_error_card.dart';
 import 'package:twelve_notes/src/router/app_router.dart';
-import 'package:twelve_notes/src/utils/position_render_mixin.dart';
-
-GlobalKey registrationButtonKey = GlobalKey();
 
 @RoutePage()
 class SignUpPage extends StatelessWidget implements AutoRouteWrapper {
@@ -68,7 +64,9 @@ class SignUpPage extends StatelessWidget implements AutoRouteWrapper {
                   ),
                 ),
                 Expanded(
-                  child: _FormWidget(),
+                  child: _FormWidget(
+                    hasBackground: false,
+                  ),
                 ),
               ],
             );
@@ -77,54 +75,19 @@ class SignUpPage extends StatelessWidget implements AutoRouteWrapper {
       );
 }
 
-class _SmallContent extends StatefulWidget {
+class _SmallContent extends StatelessWidget {
   const _SmallContent();
 
   @override
-  State<_SmallContent> createState() => _SmallContentState();
-}
-
-class _SmallContentState extends State<_SmallContent> with PositionRenderMixin {
-  double _height = 0.0;
-
-  @override
-  void didChangeDependencies() {
-    SchedulerBinding.instance.addPostFrameCallback((duration) {
-      final y = getGlobalHeightPosition(registrationButtonKey);
-      setState(() {
-        _height = y - 16.0;
-      });
-    });
-    super.didChangeDependencies();
-  }
-
-  double get height {
-    final shouldHeight = MediaQuery.of(context).size.height - _height;
-
-    if (shouldHeight > 0) {
-      return shouldHeight;
-    }
-
-    return 0.0;
-  }
-
-  @override
-  Widget build(BuildContext context) => Stack(
-        children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: ImageBackground(
-              asset: AppAssets.registerBg,
-              height: height,
-            ),
-          ),
-          const _FormWidget(),
-        ],
-      );
+  Widget build(BuildContext context) => const _FormWidget();
 }
 
 class _FormWidget extends StatelessWidget {
-  const _FormWidget();
+  final bool hasBackground;
+
+  const _FormWidget({
+    this.hasBackground = true,
+  });
 
   @override
   Widget build(BuildContext context) => BlocConsumer<SignUpBloc, SignUpState>(
@@ -257,7 +220,6 @@ class _SignUpButton extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(top: 80.0),
         child: FilledButton(
-          key: registrationButtonKey,
           onPressed: disabled ? null : () => context.read<SignUpBloc>().onSignUp(),
           child: disabled ? const CircularProgressIndicator() : Text(context.appStrings.ctaSignUp),
         ),

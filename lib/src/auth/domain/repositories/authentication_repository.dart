@@ -43,6 +43,7 @@ class AuthenticationRepository {
     }
   }
 
+  /// Performs Google sign in
   Future<AuthResponse> googleSignIn() async {
     /// Web Client ID that you registered with Google Cloud.
     const webClientId = Environment.googleAuthWeb;
@@ -102,6 +103,16 @@ class AuthenticationRepository {
     return _authService.signInWithApple(
       idToken: idToken,
       rawNonce: rawNonce,
+    );
+  }
+
+  Future<AuthResponse> signIn({
+    required String email,
+    required String password,
+  }) async {
+    return await _authService.signIn(
+      email: email,
+      password: password,
     );
   }
 }

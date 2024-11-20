@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
 import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.dart';
+import 'package:twelve_notes/src/auth/presentation/pages/new_password_page.dart';
 import 'package:twelve_notes/src/auth/presentation/pages/sign_in_page.dart';
 import 'package:twelve_notes/src/auth/presentation/pages/sign_up_page.dart';
 import 'package:twelve_notes/src/presentation/pages/confirm_page.dart';
 import 'package:twelve_notes/src/presentation/pages/main_page.dart';
+import 'package:twelve_notes/src/utils/logger.dart';
 import 'package:twelve_notes/src/welcome/presentation/pages/welcome_page.dart';
 
 part 'app_router.gr.dart';
@@ -24,11 +26,13 @@ class AppRouter extends RootStackRouter {
         SignInRoute.name,
         SignUpRoute.name,
         WelcomeRoute.name,
+        NewPasswordRoute.name,
       ].contains(route);
 
   @override
   List<AutoRouteGuard> get guards => [
         AutoRouteGuard.simple((NavigationResolver resolver, StackRouter router) {
+          talker.info(resolver.route.name);
           if (_authCubit.isAuthenticated || _notGuardingRoute(resolver.route.name)) {
             resolver.next();
           } else {
@@ -39,10 +43,11 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: MainRoute.page, initial: true),
+        AutoRoute(page: MainRoute.page),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
         AutoRoute(page: WelcomeRoute.page),
         AutoRoute(page: ConfirmRoute.page),
+        AutoRoute(page: NewPasswordRoute.page, initial: true),
       ];
 }

@@ -12,18 +12,14 @@ import 'package:twelve_notes/src/utils/logger.dart';
 
 class AuthenticationRepository {
   final AuthenticationService _authService;
-  // final GoogleSignIn _googleSignIn;
+
   final SessionMapper _sessionMapper;
 
   AuthenticationRepository({
     required AuthenticationService authService,
-    // required GoogleSignIn googleSignIn,
     required SessionMapper sessionMapper,
   })  : _authService = authService,
-        // _googleSignIn = googleSignIn,
         _sessionMapper = sessionMapper;
-
-  // static const _userAlreadyRegisterKey = 'User already registered';
 
   Future<bool> signUp({
     required String email,
@@ -119,4 +115,12 @@ class AuthenticationRepository {
   Future<void> signOut() => _authService.signOut();
 
   Stream<AuthState> get onAuthStateChange => _authService.onAuthStateChange;
+
+  Future<void> resetPassword(String email) => _authService.resetPassword(email);
+
+  Future<void> updatePassword(String password) => _authService.updateUser(
+        UserAttributes(
+          password: password,
+        ),
+      );
 }

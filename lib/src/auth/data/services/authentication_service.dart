@@ -62,4 +62,13 @@ class AuthenticationService {
   Future<void> signOut() => _supabase.auth.signOut();
 
   Stream<AuthState> get onAuthStateChange => _supabase.auth.onAuthStateChange;
+
+  Future<void> resetPassword(String email) => _supabase.auth.resetPasswordForEmail(
+        email,
+        redirectTo: 'https://twelvenotesdl.web.app/new-password',
+      );
+
+  Future<void> updateUser(UserAttributes attibutes) => _supabase.auth.updateUser(
+        attibutes,
+      );
 }

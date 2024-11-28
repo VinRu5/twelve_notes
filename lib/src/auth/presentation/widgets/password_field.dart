@@ -83,7 +83,7 @@ class _PasswordFieldState extends State<PasswordField> {
         validator: FormBuilderValidators.compose([
           FormBuilderValidators.required(),
           FormBuilderValidators.minLength(8),
-          FormBuilderValidators.match(K.passwordRegEx),
+          FormBuilderValidators.match(TwelveK.passwordRegEx),
           if (widget.validators != null) ...widget.validators!,
         ]),
       );

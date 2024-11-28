@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:twelve_notes/src/misc/constants.dart';
 import 'package:twelve_notes/src/utils/logger.dart';
 
 class AuthenticationService {
@@ -16,7 +17,7 @@ class AuthenticationService {
       final AuthResponse response = await _supabase.auth.signUp(
         email: email,
         password: password,
-        emailRedirectTo: 'https://twelvenotesdl.web.app/confirm',
+        emailRedirectTo: '${TwelveK.deepLinkBaseUrl}${TwelveK.confirmRegistrationPath}',
       );
 
       talker.info('Auth response: $response');
@@ -65,7 +66,7 @@ class AuthenticationService {
 
   Future<void> resetPassword(String email) => _supabase.auth.resetPasswordForEmail(
         email,
-        redirectTo: 'https://twelvenotesdl.web.app/new-password',
+        redirectTo: '${TwelveK.deepLinkBaseUrl}${TwelveK.newPasswordPath}',
       );
 
   Future<void> updateUser(UserAttributes attibutes) => _supabase.auth.updateUser(

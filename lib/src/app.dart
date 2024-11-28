@@ -6,15 +6,14 @@ import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.d
 import 'package:twelve_notes/src/di/dependency_injector.dart';
 import 'package:twelve_notes/src/router/app_router.dart';
 import 'package:twelve_notes/src/theme/twelve_theme.dart';
-import 'package:twelve_notes/src/utils/logger.dart';
+import 'package:twelve_notes/src/utils/deep_link_mixin.dart';
 
-class App extends StatelessWidget {
+class App extends StatelessWidget with DeepLinkMixin {
   const App({
     super.key,
   });
 
   AppRouter getRouter(AuthCubit authCubit) => AppRouter(authCubit: authCubit);
-  // AppRouter getRouter() => AppRouter();
 
   @override
   Widget build(BuildContext context) => DependencyInjector(
@@ -37,14 +36,9 @@ class App extends StatelessWidget {
               context.read<AuthCubit>(),
             ).config(
               // reevaluateListenable: ReevaluateListenable.stream(context.read<AuthCubit>().stream),
-              deepLinkTransformer: (uri) async {
-                talker.warning(uri);
-                return uri;
-              },
-              deepLinkBuilder: (deepLink) async {
-                talker.warning(deepLink);
-                return deepLink;
-              },
+              deepLinkTransformer: deepLinkTransformer,
+              // navigatorObservers: () => [AutoRouteObserver()],
+              deepLinkBuilder: deepLinkBuilder,
             ),
           ),
         ),

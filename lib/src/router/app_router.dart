@@ -4,6 +4,7 @@ import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.d
 import 'package:twelve_notes/src/auth/presentation/pages/new_password_page.dart';
 import 'package:twelve_notes/src/auth/presentation/pages/sign_in_page.dart';
 import 'package:twelve_notes/src/auth/presentation/pages/sign_up_page.dart';
+import 'package:twelve_notes/src/misc/constants.dart';
 import 'package:twelve_notes/src/presentation/pages/confirm_page.dart';
 import 'package:twelve_notes/src/presentation/pages/main_page.dart';
 import 'package:twelve_notes/src/utils/logger.dart';
@@ -43,11 +44,14 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: MainRoute.page),
+        AutoRoute(page: MainRoute.page, initial: true),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
         AutoRoute(page: WelcomeRoute.page),
         AutoRoute(page: ConfirmRoute.page),
-        AutoRoute(page: NewPasswordRoute.page, initial: true),
+        AutoRoute(
+          page: NewPasswordRoute.page,
+          path: TwelveK.newPasswordPath,
+        ),
       ];
 }

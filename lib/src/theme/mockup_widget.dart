@@ -15,13 +15,13 @@ class _MockupWidgetState extends State<MockupWidget> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Twelve Notes ♪'),
-          leading: Icon(Icons.access_alarms_rounded),
-          actions: [Icon(Icons.hail_sharp)],
+          title: const Text('Twelve Notes ♪'),
+          leading: const Icon(Icons.access_alarms_rounded),
+          actions: const [Icon(Icons.hail_sharp)],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          child: Icon(Icons.plus_one),
+          child: const Icon(Icons.plus_one),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -100,8 +100,8 @@ class _MockupWidgetState extends State<MockupWidget> {
                   'Chords Small Do- Sib RE#m',
                   style: Theme.of(context).extension<TwelveTypographyExtension>()!.chordSmall,
                 ),
-                Divider(),
-                Card(
+                const Divider(),
+                const Card(
                   child: SizedBox(
                     width: 100,
                     height: 100,
@@ -110,37 +110,37 @@ class _MockupWidgetState extends State<MockupWidget> {
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.search),
+                  icon: const Icon(Icons.search),
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('Filled button'),
+                  child: const Text('Filled button'),
                 ),
                 FilledButton(
                   onPressed: () {},
-                  child: Text('Filled button'),
+                  child: const Text('Filled button'),
                 ),
                 OutlinedButton(
                   onPressed: () {},
-                  child: Text('Outlined button'),
+                  child: const Text('Outlined button'),
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: Text('Text button'),
+                  child: const Text('Text button'),
                 ),
-                TextField(),
-                TextField(
+                const TextField(),
+                const TextField(
                   maxLines: 20,
                 ),
                 SearchAnchor.bar(
                   // builder: (context, controller) => Text('Serach'),
-                  suggestionsBuilder: (context, controller) => [Text('Serach')],
+                  suggestionsBuilder: (context, controller) => [const Text('Serach')],
                 ),
-                ListTile(
+                const ListTile(
                   title: Text('title'),
                 ),
-                Chip(label: Text('label')),
-                Badge(
+                const Chip(label: Text('label')),
+                const Badge(
                   child: Text('badge'),
                 ),
                 Switch(value: true, onChanged: (value) {}),
@@ -161,7 +161,7 @@ class _MockupWidgetState extends State<MockupWidget> {
             });
           },
           selectedIndex: _selectedIndex,
-          destinations: [
+          destinations: const [
             NavigationDestination(
               selectedIcon: Icon(
                 Icons.home,

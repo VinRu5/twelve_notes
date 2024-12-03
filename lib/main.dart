@@ -9,15 +9,20 @@ import 'package:talker/talker.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 import 'package:twelve_notes/src/app.dart';
 import 'package:twelve_notes/src/misc/environment.dart';
+import 'package:twelve_notes/src/utils/logger.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Supabase.initialize(
-    url: Environment.supabaseURL,
-    anonKey: Environment.supabaseAnon,
-  );
+  try {
+    Supabase.initialize(
+      url: Environment.supabaseURL,
+      anonKey: Environment.supabaseAnon,
+    );
+  } catch (e) {
+    talker.error(e);
+  }
 
   Bloc.observer = TalkerBlocObserver(
     talker: Talker(

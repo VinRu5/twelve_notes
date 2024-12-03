@@ -31,5 +31,20 @@
   "resetPswModalCta": "Invia email",
   "errorWrongPassword": "La password deve contenere: 1 lettera maiuscola, 1 lettera minuscola, 1 simbolo, 1 numero e lunga almeno 8 caratteri",
   "errorAlreadyExsist": "Questa email risulta già registrata. Prova con un'altra.",
-  "errorGeneric": "Si è verificato un errore. Riprova."
+  "errorGeneric": "Si è verificato un errore. Riprova.",
+  "confirmSignUpTitle": "Conferma Registrazione!",
+  "errorSignUpTitle": "Errore Registrazione!",
+  "confirmSignUpMessage": "Accedi alla tua email {email} per confermare la tua registrazione.",
+  "@confirmSignUpMessage": {
+    "placeholders": {
+      "email": {
+        "type": "String",
+        "example": "ciao@mail.it"
+      }
+    }
+  },
+  "errorSignUpMessage": "C'è stato un errore in fase di registrazione ricomincia.",
+  "startAgainButton": "Ricomincia",
+  "confirmCta": "Confirma",
+  "newPswTitle": "Reset Password"
 }

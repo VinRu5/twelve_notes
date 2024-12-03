@@ -15,8 +15,15 @@ mixin DeepLinkMixin {
     return switch (deepLink.path) {
       (final String p) when p.startsWith(TwelveK.newPasswordPath) =>
         const DeepLink([NewPasswordRoute()]),
-      // (final String p) when p.startsWith('/confirm') => const DeepLink([ConfirmRoute(title: '', message: '', success: null)]),
+      (final String p) when p.startsWith(TwelveK.loginPath) => _handleConfirmLink(deepLink),
       _ => DeepLink.defaultPath,
     };
+  }
+
+  DeepLink _handleConfirmLink(PlatformDeepLink deepLink) {
+    talker.warning('🎸 >> ${deepLink.path}');
+    return DeepLink.single(
+      const SignInRoute(),
+    );
   }
 }

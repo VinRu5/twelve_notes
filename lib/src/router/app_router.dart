@@ -7,6 +7,7 @@ import 'package:twelve_notes/src/auth/presentation/pages/sign_up_page.dart';
 import 'package:twelve_notes/src/misc/constants.dart';
 import 'package:twelve_notes/src/presentation/pages/confirm_page.dart';
 import 'package:twelve_notes/src/presentation/pages/main_page.dart';
+import 'package:twelve_notes/src/profile/presentation/pages/edit_profile.dart';
 import 'package:twelve_notes/src/utils/logger.dart';
 import 'package:twelve_notes/src/welcome/presentation/pages/welcome_page.dart';
 
@@ -28,6 +29,7 @@ class AppRouter extends RootStackRouter {
         SignUpRoute.name,
         WelcomeRoute.name,
         NewPasswordRoute.name,
+        ConfirmRoute.name,
       ].contains(route);
 
   @override
@@ -45,7 +47,10 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: MainRoute.page, initial: true),
-        AutoRoute(page: SignInRoute.page),
+        AutoRoute(
+          page: SignInRoute.page,
+          path: TwelveK.loginPath,
+        ),
         AutoRoute(page: SignUpRoute.page),
         AutoRoute(page: WelcomeRoute.page),
         AutoRoute(page: ConfirmRoute.page),
@@ -53,5 +58,6 @@ class AppRouter extends RootStackRouter {
           page: NewPasswordRoute.page,
           path: TwelveK.newPasswordPath,
         ),
+        AutoRoute(page: EditRoute.page),
       ];
 }

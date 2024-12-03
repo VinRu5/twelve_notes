@@ -22,4 +22,9 @@ final List<SingleChildWidget> services = [
       supabase: context.read<SupabaseClient>(),
     ),
   ),
+  Provider<ProfileService>(
+    create: (context) => ProfileService(
+      supabase: context.read<SupabaseClient>(),
+    ),
+  ),
 ];

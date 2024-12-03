@@ -80,6 +80,25 @@ class ConfirmRouteArgs {
 }
 
 /// generated route for
+/// [EditPage]
+class EditRoute extends PageRouteInfo<void> {
+  const EditRoute({List<PageRouteInfo>? children})
+      : super(
+          EditRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EditRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const EditPage();
+    },
+  );
+}
+
+/// generated route for
 /// [MainPage]
 class MainRoute extends PageRouteInfo<void> {
   const MainRoute({List<PageRouteInfo>? children})

@@ -8,18 +8,24 @@ import 'package:twelve_notes/src/auth/data/mappers/session_mapper.dart';
 import 'package:twelve_notes/src/auth/data/services/authentication_service.dart';
 import 'package:twelve_notes/src/errors/errors.dart';
 import 'package:twelve_notes/src/misc/environment.dart';
+import 'package:twelve_notes/src/profile/data/dto/profile_dto.dart';
+import 'package:twelve_notes/src/profile/data/services/profile_service.dart';
 import 'package:twelve_notes/src/utils/logger.dart';
+import 'package:uuid/uuid.dart';
 
 class AuthenticationRepository {
   final AuthenticationService _authService;
-
+  final ProfileService _profileService;
   final SessionMapper _sessionMapper;
+  final Uuid uuid = const Uuid();
 
-  AuthenticationRepository({
-    required AuthenticationService authService,
-    required SessionMapper sessionMapper,
-  })  : _authService = authService,
-        _sessionMapper = sessionMapper;
+  AuthenticationRepository(
+      {required AuthenticationService authService,
+      required SessionMapper sessionMapper,
+      required ProfileService profileService})
+      : _authService = authService,
+        _sessionMapper = sessionMapper,
+        _profileService = profileService;
 
   Future<bool> signUp({
     required String email,
@@ -32,6 +38,20 @@ class AuthenticationRepository {
       );
       talker.info('Repository: $response');
 
+      if (response.user == null) {
+        throw GenericSignUpException();
+      }
+
+      final profileDTO = ProfileDTO.initialProfile(
+        email: email,
+        userId: response.user!.id,
+        username: _generateUsername(email),
+      );
+
+      talker.debug(profileDTO.toJson());
+
+      await _profileService.createProfile(profileDTO);
+
       return response.session != null;
     } catch (e) {
       talker.error(e);
@@ -40,7 +60,7 @@ class AuthenticationRepository {
   }
 
   /// Performs Google sign in
-  Future<AuthResponse> googleSignIn() async {
+  Future<bool> googleSignIn() async {
     /// Web Client ID that you registered with Google Cloud.
     const webClientId = Environment.googleAuthWeb;
 
@@ -67,7 +87,7 @@ class AuthenticationRepository {
       throw GoogleOAuthException();
     }
 
-    return _authService.googleSignIn(
+    final AuthResponse response = await _authService.googleSignIn(
       idToken: idToken,
       accessToken: accessToken,
     );
@@ -76,6 +96,7 @@ class AuthenticationRepository {
     // verificare se esiste nella tabella del profilo
     // se non esiste creare il profilo nella rispettiva tabella
     // altrimenti continuare con il login
+    return response.session != null;
   }
 
   /// Performs Apple sign in on iOS or macOS
@@ -123,4 +144,11 @@ class AuthenticationRepository {
           password: password,
         ),
       );
+
+  String _generateUsername(String email) {
+    final subId = uuid.v4().substring(0, 8);
+    final subEmail = email.split('@').first;
+
+    return '${subEmail}_$subId';
+  }
 }

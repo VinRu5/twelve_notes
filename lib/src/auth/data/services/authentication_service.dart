@@ -17,10 +17,8 @@ class AuthenticationService {
       final AuthResponse response = await _supabase.auth.signUp(
         email: email,
         password: password,
-        emailRedirectTo: '${TwelveK.deepLinkBaseUrl}${TwelveK.confirmRegistrationPath}',
+        emailRedirectTo: '${TwelveK.deepLinkBaseUrl}${TwelveK.loginPath}',
       );
-
-      talker.info('Auth response: $response');
 
       return response;
     } catch (e) {

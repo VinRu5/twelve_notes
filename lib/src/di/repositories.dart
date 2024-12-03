@@ -5,6 +5,7 @@ final List<SingleChildWidget> repositories = [
     create: (context) => AuthenticationRepository(
       // googleSignIn: context.read<GoogleSignIn>(),
       authService: context.read<AuthenticationService>(),
+      profileService: context.read<ProfileService>(),
       sessionMapper: SessionMapper(
         userMapper: UserMapper(),
       ),

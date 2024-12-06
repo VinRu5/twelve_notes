@@ -10,7 +10,6 @@ import 'package:twelve_notes/src/misc/constants.dart';
 import 'package:twelve_notes/src/presentation/pages/confirm_page.dart';
 import 'package:twelve_notes/src/presentation/pages/main_page.dart';
 import 'package:twelve_notes/src/profile/presentation/pages/edit_profile.dart';
-import 'package:twelve_notes/src/profile/presentation/pages/profile_page.dart';
 import 'package:twelve_notes/src/search/presentation/pages/search_page.dart';
 import 'package:twelve_notes/src/utils/logger.dart';
 import 'package:twelve_notes/src/welcome/presentation/pages/welcome_page.dart';

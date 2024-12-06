@@ -1,7 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:twelve_notes/src/misc/app_assets.dart';
 import 'package:twelve_notes/src/misc/app_localization_extension.dart';
+import 'package:twelve_notes/src/profile/presentation/pages/settings_page.dart';
 import 'package:twelve_notes/src/router/app_router.dart';
 import 'package:twelve_notes/src/theme/extension_theme.dart';
 import 'package:twelve_notes/src/theme/twelve_colors.dart';
@@ -100,9 +103,8 @@ class _NavigationButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => InkWell(
         onTap: onPressed,
-        borderRadius: BorderRadius.circular(
-          16.0,
-        ),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
           padding: const EdgeInsets.symmetric(
@@ -138,9 +140,20 @@ class _MainAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) => AppBar(
         centerTitle: false,
+        automaticallyImplyLeading: false,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16.0),
-          child: CircleAvatar(),
+          child: CircleAvatar(
+            backgroundImage: const AssetImage(AppAssets.deafaultAvatar),
+            child: InkWell(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () => showCupertinoModalBottomSheet(
+                context: context,
+                builder: (context) => SettingsPage(),
+              ),
+            ),
+          ),
         ),
         title: Text(
           switch (activeIndex) {

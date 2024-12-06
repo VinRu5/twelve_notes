@@ -9,4 +9,5 @@ class AppAssets {
   static const String welcomeImage2 = '$_path/welcome_image_2.jpg';
   static const String welcomeImage3 = '$_path/welcome_image_3.jpg';
   static const String welcomeImage4 = '$_path/welcome_image_4.jpg';
+  static const String deafaultAvatar = '$_path/default_avatar.png';
 }

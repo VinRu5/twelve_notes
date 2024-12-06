@@ -4,10 +4,14 @@ import 'package:twelve_notes/src/auth/presentation/blocs/auth_cubit/auth_cubit.d
 import 'package:twelve_notes/src/auth/presentation/pages/new_password_page.dart';
 import 'package:twelve_notes/src/auth/presentation/pages/sign_in_page.dart';
 import 'package:twelve_notes/src/auth/presentation/pages/sign_up_page.dart';
+import 'package:twelve_notes/src/home/presentation/pages/home_page.dart';
+import 'package:twelve_notes/src/library/presentation/pages/library_page.dart';
 import 'package:twelve_notes/src/misc/constants.dart';
 import 'package:twelve_notes/src/presentation/pages/confirm_page.dart';
 import 'package:twelve_notes/src/presentation/pages/main_page.dart';
 import 'package:twelve_notes/src/profile/presentation/pages/edit_profile.dart';
+import 'package:twelve_notes/src/profile/presentation/pages/profile_page.dart';
+import 'package:twelve_notes/src/search/presentation/pages/search_page.dart';
 import 'package:twelve_notes/src/utils/logger.dart';
 import 'package:twelve_notes/src/welcome/presentation/pages/welcome_page.dart';
 
@@ -46,7 +50,15 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: MainRoute.page, initial: true),
+        AutoRoute(
+          initial: true,
+          page: MainRoute.page,
+          children: [
+            AutoRoute(page: HomeRoute.page),
+            AutoRoute(page: LibraryRoute.page),
+            AutoRoute(page: SearchRoute.page),
+          ],
+        ),
         AutoRoute(
           page: SignInRoute.page,
           path: TwelveK.loginPath,

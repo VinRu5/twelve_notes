@@ -6,4 +6,6 @@ extension ExtensionTheme on BuildContext {
       Theme.of(this).extension<TwelveTypographyExtension>();
 
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
+
+  bool get isLightMode => Theme.of(this).brightness == Brightness.light;
 }

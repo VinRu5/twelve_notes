@@ -49,5 +49,6 @@
   "newPswTitle": "Reset Password",
   "homeTitlePage": "Home",
   "libraryTitlePage": "Libreria",
-  "searchTitlePage": "Cerca"
+  "searchTitlePage": "Cerca",
+  "settingsTitlePage": "Impostazioni"
 }

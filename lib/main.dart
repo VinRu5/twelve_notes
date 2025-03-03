@@ -1,11 +1,9 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:talker/talker.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 import 'package:twelve_notes/src/app.dart';
 import 'package:twelve_notes/src/misc/environment.dart';
@@ -25,11 +23,7 @@ void main() async {
   }
 
   Bloc.observer = TalkerBlocObserver(
-    talker: Talker(
-      logger: TalkerLogger(
-        output: log,
-      ),
-    ),
+    talker: talker,
   );
 
   SystemChrome.setPreferredOrientations([

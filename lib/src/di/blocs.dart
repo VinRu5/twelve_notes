@@ -11,5 +11,8 @@ final List<SingleChildWidget> blocs = [
       authRepository: context.read<AuthenticationRepository>(),
     ),
   ),
+  BlocProvider<NavPositionedCubit>(
+    create: (context) => NavPositionedCubit(),
+  ),
   // BlocProvider(create: (_) => SearchCubit()),
 ];

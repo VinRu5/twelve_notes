@@ -99,6 +99,53 @@ class EditRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [EditSongPage]
+class EditSongRoute extends PageRouteInfo<EditSongRouteArgs> {
+  EditSongRoute({
+    Key? key,
+    String? idSong,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EditSongRoute.name,
+          args: EditSongRouteArgs(
+            key: key,
+            idSong: idSong,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EditSongRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<EditSongRouteArgs>(
+          orElse: () => const EditSongRouteArgs());
+      return EditSongPage(
+        key: args.key,
+        idSong: args.idSong,
+      );
+    },
+  );
+}
+
+class EditSongRouteArgs {
+  const EditSongRouteArgs({
+    this.key,
+    this.idSong,
+  });
+
+  final Key? key;
+
+  final String? idSong;
+
+  @override
+  String toString() {
+    return 'EditSongRouteArgs{key: $key, idSong: $idSong}';
+  }
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -118,6 +165,25 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [HomeTabPage]
+class HomeTabRoute extends PageRouteInfo<void> {
+  const HomeTabRoute({List<PageRouteInfo>? children})
+      : super(
+          HomeTabRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeTabRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomeTabPage();
+    },
+  );
+}
+
+/// generated route for
 /// [LibraryPage]
 class LibraryRoute extends PageRouteInfo<void> {
   const LibraryRoute({List<PageRouteInfo>? children})
@@ -132,6 +198,25 @@ class LibraryRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const LibraryPage();
+    },
+  );
+}
+
+/// generated route for
+/// [LibraryTabPage]
+class LibraryTabRoute extends PageRouteInfo<void> {
+  const LibraryTabRoute({List<PageRouteInfo>? children})
+      : super(
+          LibraryTabRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LibraryTabRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LibraryTabPage();
     },
   );
 }
@@ -189,6 +274,25 @@ class SearchRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const SearchPage();
+    },
+  );
+}
+
+/// generated route for
+/// [SearchTabPage]
+class SearchTabRoute extends PageRouteInfo<void> {
+  const SearchTabRoute({List<PageRouteInfo>? children})
+      : super(
+          SearchTabRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchTabRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SearchTabPage();
     },
   );
 }

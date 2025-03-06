@@ -1,11 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:twelve_notes/src/misc/app_assets.dart';
-import 'package:twelve_notes/src/misc/app_localization_extension.dart';
+import 'package:twelve_notes/src/presentation/blocs/nav_positioned_cubit.dart';
 import 'package:twelve_notes/src/presentation/widgets/ink_well_transparent.dart';
-import 'package:twelve_notes/src/profile/presentation/pages/settings_page.dart';
 import 'package:twelve_notes/src/router/app_router.dart';
 import 'package:twelve_notes/src/theme/extension_theme.dart';
 import 'package:twelve_notes/src/theme/twelve_colors.dart';
@@ -17,9 +15,9 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AutoTabsRouter(
         routes: const [
-          HomeRoute(),
-          LibraryRoute(),
-          SearchRoute(),
+          HomeTabRoute(),
+          LibraryTabRoute(),
+          SearchTabRoute(),
         ],
         transitionBuilder: (context, child, animation) => FadeTransition(
           opacity: animation,
@@ -30,9 +28,6 @@ class MainPage extends StatelessWidget {
           final tabsRouter = AutoTabsRouter.of(context);
 
           return Scaffold(
-            appBar: _MainAppBar(
-              activeIndex: tabsRouter.activeIndex,
-            ),
             body: child,
             bottomSheet: _TwelveBottomBar(
               activeIndex: tabsRouter.activeIndex,
@@ -62,31 +57,39 @@ class _TwelveBottomBar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Card(
-          color: context.isLightMode ? TwelveColors.bgDark : TwelveColors.bgLight,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
-              horizontal: 24.0,
+  Widget build(BuildContext context) => BlocBuilder<NavPositionedCubit, NavPositionedState>(
+        builder: (context, state) {
+          return AnimatedSlide(
+            duration: const Duration(milliseconds: 150),
+            offset: state is ShowNavPositioned ? Offset.zero : Offset(Offset.zero.dx, 100),
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Card(
+                color: context.isLightMode ? TwelveColors.bgDark : TwelveColors.bgLight,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 24.0,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: icons
+                        .asMap()
+                        .entries
+                        .map<Widget>(
+                          (icon) => _NavigationButton(
+                            icon: icon.value,
+                            onPressed: () => onChanged(icon.key),
+                            selected: activeIndex == icon.key,
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+              ),
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: icons
-                  .asMap()
-                  .entries
-                  .map<Widget>(
-                    (icon) => _NavigationButton(
-                      icon: icon.value,
-                      onPressed: () => onChanged(icon.key),
-                      selected: activeIndex == icon.key,
-                    ),
-                  )
-                  .toList(),
-            ),
-          ),
-        ),
+          );
+        },
       );
 }
 
@@ -127,45 +130,4 @@ class _NavigationButton extends StatelessWidget {
           ),
         ),
       );
-}
-
-class _MainAppBar extends StatelessWidget implements PreferredSize {
-  final int activeIndex;
-
-  const _MainAppBar({
-    required this.activeIndex,
-  });
-
-  @override
-  Widget build(BuildContext context) => AppBar(
-        centerTitle: false,
-        automaticallyImplyLeading: false,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16.0),
-          child: CircleAvatar(
-            backgroundImage: const AssetImage(AppAssets.deafaultAvatar),
-            child: InkWellTransparent(
-              onTap: () => showCupertinoModalBottomSheet(
-                context: context,
-                builder: (context) => const SettingsPage(),
-              ),
-            ),
-          ),
-        ),
-        title: Text(
-          switch (activeIndex) {
-            0 => context.appStrings.homeTitlePage,
-            1 => context.appStrings.libraryTitlePage,
-            2 => context.appStrings.searchTitlePage,
-            _ => throw UnimplementedError(),
-          },
-          style: context.twelveStyle?.headlineMedium,
-        ),
-      );
-
-  @override
-  Widget get child => this;
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

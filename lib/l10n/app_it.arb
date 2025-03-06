@@ -46,5 +46,9 @@
   "errorSignUpMessage": "C'è stato un errore in fase di registrazione ricomincia.",
   "startAgainButton": "Ricomincia",
   "confirmCta": "Confirma",
-  "newPswTitle": "Reset Password"
+  "newPswTitle": "Reset Password",
+  "homeTitlePage": "Home",
+  "libraryTitlePage": "Libreria",
+  "searchTitlePage": "Cerca",
+  "settingsTitlePage": "Impostazioni"
 }

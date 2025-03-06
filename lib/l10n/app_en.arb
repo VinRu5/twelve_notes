@@ -46,5 +46,9 @@
   "errorSignUpMessage": "There was an error during registration. Please start again.",
   "startAgainButton": "Start again",
   "confirmCta": "Confirm",
-  "newPswTitle": "Reset Password"
+  "newPswTitle": "Reset Password",
+  "homeTitlePage": "Home",
+  "libraryTitlePage": "Library",
+  "searchTitlePage": "Search",
+  "settingsTitlePage": "Settings"
 }

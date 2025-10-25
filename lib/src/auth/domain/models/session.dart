@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:twelve_notes/src/auth/domain/models/user.dart';
+
+import 'user.dart';
 
 class Session with EquatableMixin {
   final String accessToken;

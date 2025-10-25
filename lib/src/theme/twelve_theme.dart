@@ -5,7 +5,11 @@ import 'package:twelve_notes/src/theme/twelve_typography.dart';
 class TwelveTheme {
   TwelveTheme._();
 
-  static ThemeData get light => ThemeData(
+  static TwelveTheme? _instance;
+
+  static TwelveTheme get instance => _instance ??= TwelveTheme._();
+
+  ThemeData get light => ThemeData(
         brightness: Brightness.light,
         extensions: [
           _typographyLight,
@@ -27,7 +31,7 @@ class TwelveTheme {
         cardTheme: _cardThemeDataLight,
       );
 
-  static ThemeData get dark => ThemeData(
+  ThemeData get dark => ThemeData(
         brightness: Brightness.dark,
         extensions: [
           _typographyDark,
@@ -49,13 +53,11 @@ class TwelveTheme {
         cardTheme: _cardThemeDataDark,
       );
 
-  static final TwelveTypographyExtension _typographyLight =
-      TwelveTypographyExtension(Brightness.light);
+  TwelveTypographyExtension get _typographyLight => TwelveTypographyExtension(Brightness.light);
 
-  static final TwelveTypographyExtension _typographyDark =
-      TwelveTypographyExtension(Brightness.dark);
+  TwelveTypographyExtension get _typographyDark => TwelveTypographyExtension(Brightness.dark);
 
-  static const ColorScheme _colorSchemeLight = ColorScheme(
+  final ColorScheme _colorSchemeLight = ColorScheme(
     brightness: Brightness.light,
     primary: TwelveColors.primary,
     onPrimary: TwelveColors.textLight,
@@ -68,7 +70,7 @@ class TwelveTheme {
     surfaceContainerHighest: TwelveColors.surfaceLight,
     outline: TwelveColors.primary,
   );
-  static const ColorScheme _colorSchemeDark = ColorScheme(
+  final ColorScheme _colorSchemeDark = ColorScheme(
     brightness: Brightness.dark,
     primary: TwelveColors.primary,
     onPrimary: TwelveColors.textLight,
@@ -82,13 +84,13 @@ class TwelveTheme {
     outline: TwelveColors.primary,
   );
 
-  static const DividerThemeData _dividerTheme = DividerThemeData(
+  final DividerThemeData _dividerTheme = DividerThemeData(
     color: TwelveColors.primary,
   );
 
-  static const AppBarTheme _appBarThemeLight = AppBarTheme(
+  final AppBarTheme _appBarThemeLight = AppBarTheme(
     surfaceTintColor: TwelveColors.bgLight,
-    color: TwelveColors.bgLight,
+    backgroundColor: TwelveColors.bgLight,
     centerTitle: true,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
@@ -96,9 +98,9 @@ class TwelveTheme {
       ),
     ),
   );
-  static const AppBarTheme _appBarThemeDark = AppBarTheme(
+  final AppBarTheme _appBarThemeDark = AppBarTheme(
     surfaceTintColor: TwelveColors.bgDark,
-    color: TwelveColors.bgDark,
+    backgroundColor: TwelveColors.bgDark,
     centerTitle: true,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
@@ -107,20 +109,20 @@ class TwelveTheme {
     ),
   );
 
-  static const NavigationBarThemeData _navigationBarThemeLight = NavigationBarThemeData(
+  final NavigationBarThemeData _navigationBarThemeLight = NavigationBarThemeData(
     elevation: 0,
     indicatorColor: TwelveColors.primary,
     indicatorShape: StadiumBorder(),
     backgroundColor: TwelveColors.bgLight,
   );
-  static const NavigationBarThemeData _navigationBarThemeDark = NavigationBarThemeData(
+  final NavigationBarThemeData _navigationBarThemeDark = NavigationBarThemeData(
     elevation: 0,
     indicatorColor: TwelveColors.primary,
     indicatorShape: StadiumBorder(),
     backgroundColor: TwelveColors.bgDark,
   );
 
-  static final FilledButtonThemeData _filledButtonThemeDataLight = FilledButtonThemeData(
+  late final FilledButtonThemeData _filledButtonThemeDataLight = FilledButtonThemeData(
     style: FilledButton.styleFrom(
       textStyle: _typographyLight.buttonText,
       shape: ContinuousRectangleBorder(
@@ -128,7 +130,7 @@ class TwelveTheme {
       ),
     ),
   );
-  static final FilledButtonThemeData _filledButtonThemeDataDark = FilledButtonThemeData(
+  late final FilledButtonThemeData _filledButtonThemeDataDark = FilledButtonThemeData(
     style: FilledButton.styleFrom(
       textStyle: _typographyDark.buttonText,
       shape: ContinuousRectangleBorder(
@@ -137,7 +139,7 @@ class TwelveTheme {
     ),
   );
 
-  static final ElevatedButtonThemeData _elevatedButtonThemeDataLight = ElevatedButtonThemeData(
+  late final ElevatedButtonThemeData _elevatedButtonThemeDataLight = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       textStyle: _typographyLight.buttonText,
       shape: ContinuousRectangleBorder(
@@ -145,7 +147,7 @@ class TwelveTheme {
       ),
     ),
   );
-  static final ElevatedButtonThemeData _elevatedButtonThemeDataDark = ElevatedButtonThemeData(
+  late final ElevatedButtonThemeData _elevatedButtonThemeDataDark = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       textStyle: _typographyDark.buttonText,
       shape: ContinuousRectangleBorder(
@@ -154,7 +156,7 @@ class TwelveTheme {
     ),
   );
 
-  static final TextButtonThemeData _textButtonThemeDataLight = TextButtonThemeData(
+  late final TextButtonThemeData _textButtonThemeDataLight = TextButtonThemeData(
     style: TextButton.styleFrom(
       textStyle: _typographyLight.buttonText,
       shape: ContinuousRectangleBorder(
@@ -162,7 +164,7 @@ class TwelveTheme {
       ),
     ),
   );
-  static final TextButtonThemeData _textButtonThemeDataDark = TextButtonThemeData(
+  late final TextButtonThemeData _textButtonThemeDataDark = TextButtonThemeData(
     style: TextButton.styleFrom(
       textStyle: _typographyDark.buttonText,
       shape: ContinuousRectangleBorder(
@@ -171,7 +173,7 @@ class TwelveTheme {
     ),
   );
 
-  static final OutlinedButtonThemeData _outlinedButtonThemeDataLight = OutlinedButtonThemeData(
+  late final OutlinedButtonThemeData _outlinedButtonThemeDataLight = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       textStyle: _typographyLight.buttonText,
       shape: ContinuousRectangleBorder(
@@ -179,7 +181,7 @@ class TwelveTheme {
       ),
     ),
   );
-  static final OutlinedButtonThemeData _outlinedButtonThemeDataDark = OutlinedButtonThemeData(
+  late final OutlinedButtonThemeData _outlinedButtonThemeDataDark = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       textStyle: _typographyDark.buttonText,
       shape: ContinuousRectangleBorder(
@@ -188,26 +190,26 @@ class TwelveTheme {
     ),
   );
 
-  static final IconButtonThemeData _iconButtonThemeDataLight = IconButtonThemeData(
+  final IconButtonThemeData _iconButtonThemeDataLight = IconButtonThemeData(
     style: IconButton.styleFrom(
       backgroundColor: TwelveColors.primary,
     ),
   );
-  static final IconButtonThemeData _iconButtonThemeDataDark = IconButtonThemeData(
+  final IconButtonThemeData _iconButtonThemeDataDark = IconButtonThemeData(
     style: IconButton.styleFrom(
       backgroundColor: TwelveColors.primary,
       foregroundColor: TwelveColors.textLight,
     ),
   );
 
-  static final InputDecorationTheme _inputDecorationThemeLight = InputDecorationTheme(
+  late final InputDecorationTheme _inputDecorationThemeLight = InputDecorationTheme(
     border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(24.0)),
     ),
     filled: true,
     errorStyle: _typographyLight.errorStyle,
   );
-  static final InputDecorationTheme _inputDecorationThemeDark = InputDecorationTheme(
+  late final InputDecorationTheme _inputDecorationThemeDark = InputDecorationTheme(
     border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(24.0)),
     ),
@@ -215,7 +217,7 @@ class TwelveTheme {
     errorStyle: _typographyDark.errorStyle,
   );
 
-  static const SearchBarThemeData _searchBarThemeDataLight = SearchBarThemeData(
+  final SearchBarThemeData _searchBarThemeDataLight = SearchBarThemeData(
     backgroundColor: WidgetStatePropertyAll(TwelveColors.surfaceLight),
     shadowColor: WidgetStatePropertyAll(TwelveColors.primary),
     surfaceTintColor: WidgetStatePropertyAll(Colors.white54),
@@ -227,7 +229,7 @@ class TwelveTheme {
       ),
     ),
   );
-  static const SearchBarThemeData _searchBarThemeDataDark = SearchBarThemeData(
+  final SearchBarThemeData _searchBarThemeDataDark = SearchBarThemeData(
     backgroundColor: WidgetStatePropertyAll(TwelveColors.surfaceDark),
     shadowColor: WidgetStatePropertyAll(TwelveColors.primary),
     surfaceTintColor: WidgetStatePropertyAll(TwelveColors.surfaceLight),
@@ -240,25 +242,25 @@ class TwelveTheme {
     ),
   );
 
-  static const SearchViewThemeData _searchViewThemeDataLight = SearchViewThemeData(
+  final SearchViewThemeData _searchViewThemeDataLight = SearchViewThemeData(
     backgroundColor: TwelveColors.surfaceLight,
     surfaceTintColor: Colors.white54,
   );
-  static const SearchViewThemeData _searchViewThemeDataDark = SearchViewThemeData(
+  final SearchViewThemeData _searchViewThemeDataDark = SearchViewThemeData(
     backgroundColor: TwelveColors.surfaceDark,
     surfaceTintColor: TwelveColors.surfaceLight,
   );
 
-  static const ChipThemeData _chipThemeDataLight = ChipThemeData(
+  final ChipThemeData _chipThemeDataLight = ChipThemeData(
     selectedColor: TwelveColors.primary,
     showCheckmark: false,
   );
-  static const ChipThemeData _chipThemeDataDark = ChipThemeData(
+  final ChipThemeData _chipThemeDataDark = ChipThemeData(
     selectedColor: TwelveColors.primary,
     showCheckmark: false,
   );
 
-  static const CardTheme _cardThemeDataLight = CardTheme(
+  final CardThemeData _cardThemeDataLight = CardThemeData(
     color: TwelveColors.surfaceLight,
     shape: ContinuousRectangleBorder(
       borderRadius: BorderRadius.all(
@@ -266,7 +268,8 @@ class TwelveTheme {
       ),
     ),
   );
-  static const CardTheme _cardThemeDataDark = CardTheme(
+
+  final CardThemeData _cardThemeDataDark = CardThemeData(
     color: TwelveColors.surfaceDark,
     shape: ContinuousRectangleBorder(
       borderRadius: BorderRadius.all(

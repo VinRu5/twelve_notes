@@ -26,7 +26,7 @@ class DependencyInjector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Provider<SupabaseClient>(
-        create: (_) => Supabase.instance.client,
+        create: (_) => MockSupabaseClient('supabaseUrl', 'supabaseKey'),
         child: MultiProvider(
           providers: services,
           child: MultiRepositoryProvider(
@@ -38,4 +38,8 @@ class DependencyInjector extends StatelessWidget {
           ),
         ),
       );
+}
+
+class MockSupabaseClient extends SupabaseClient {
+  MockSupabaseClient(super.supabaseUrl, super.supabaseKey);
 }

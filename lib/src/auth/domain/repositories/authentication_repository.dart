@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:twelve_notes/src/auth/data/mappers/session_mapper.dart';
-import 'package:twelve_notes/src/auth/data/services/authentication_service.dart';
-import 'package:twelve_notes/src/errors/errors.dart';
-import 'package:twelve_notes/src/misc/environment.dart';
-import 'package:twelve_notes/src/profile/data/dto/profile_dto.dart';
-import 'package:twelve_notes/src/profile/data/services/profile_service.dart';
-import 'package:twelve_notes/src/utils/logger.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../../errors/errors.dart';
+import '../../../misc/environment.dart';
+import '../../../profile/data/dto/profile_dto.dart';
+import '../../../profile/data/services/profile_service.dart';
+import '../../../utils/logger.dart';
+import '../../data/mappers/session_mapper.dart';
+import '../../data/services/authentication_service.dart';
 
 class AuthenticationRepository {
   final AuthenticationService _authService;
@@ -70,12 +70,13 @@ class AuthenticationRepository {
     // Google sign in on Android will work without providing the Android
     // Client ID registered on Google Cloud.
 
-    final GoogleSignIn googleSignIn = GoogleSignIn(
-      clientId: iosClientId,
-      serverClientId: webClientId,
-      // scopes: [
-      //   'https://www.googleapis.com/auth/userinfo.email',
-      //   'https://www.googleapis.com/auth/userinfo.profile',
+    /*  final GoogleSignIn googleSignIn = GoogleSignIn.instance
+      ..initialize(
+        clientId: iosClientId,
+        serverClientId: webClientId,
+        // scopes: [
+        //   'https://www.googleapis.com/auth/userinfo.email',
+        //   'https://www.googleapis.com/auth/userinfo.profile',
       // ],
     );
     final googleUser = await googleSignIn.signIn();
@@ -96,7 +97,8 @@ class AuthenticationRepository {
     // verificare se esiste nella tabella del profilo
     // se non esiste creare il profilo nella rispettiva tabella
     // altrimenti continuare con il login
-    return response.session != null;
+    return response.session != null; */
+    return Future.value(false);
   }
 
   /// Performs Apple sign in on iOS or macOS

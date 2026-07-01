@@ -12,8 +12,10 @@ class NewPasswordCubit extends Cubit<NewPasswordState> {
 
   final AuthenticationRepository authenticationRepository;
 
-  get resetPasswordField => formKey.currentState?.fields[resetPasswordNameKey];
-  get resetPasswordConfirmField => formKey.currentState?.fields[resetPasswordConfirmNameKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get resetPasswordField =>
+      formKey.currentState?.fields[resetPasswordNameKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get resetPasswordConfirmField =>
+      formKey.currentState?.fields[resetPasswordConfirmNameKey];
 
   final formKey = GlobalKey<FormBuilderState>();
 
@@ -26,9 +28,9 @@ class NewPasswordCubit extends Cubit<NewPasswordState> {
 
     if ((isValid ?? false) &&
         resetPasswordField != null &&
-        resetPasswordField == resetPasswordConfirmField) {
+        resetPasswordField?.value == resetPasswordConfirmField?.value) {
       try {
-        await authenticationRepository.updatePassword(resetPasswordField);
+        await authenticationRepository.updatePassword(resetPasswordField!.value as String);
 
         emit(NewPasswordUpdated());
       } catch (e) {

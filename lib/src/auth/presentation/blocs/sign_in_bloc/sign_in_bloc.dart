@@ -17,8 +17,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
   final formKey = GlobalKey<FormBuilderState>();
 
-  get emailField => formKey.currentState?.fields[emailNameKey];
-  get passwordField => formKey.currentState?.fields[passwordNameKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get emailField =>
+      formKey.currentState?.fields[emailNameKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get passwordField =>
+      formKey.currentState?.fields[passwordNameKey];
 
   SignInBloc({
     required this.authenticationRepository,

@@ -19,10 +19,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
   final formKey = GlobalKey<FormBuilderState>();
 
-  get emailField => formKey.currentState?.fields[emailFieldKey];
-  get emailConfirmField => formKey.currentState?.fields[emailConfirmFieldKey];
-  get passwordField => formKey.currentState?.fields[passwordFieldKey];
-  get passwordConfirmField => formKey.currentState?.fields[passwordConfirmFieldKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get emailField =>
+      formKey.currentState?.fields[emailFieldKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get emailConfirmField =>
+      formKey.currentState?.fields[emailConfirmFieldKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get passwordField =>
+      formKey.currentState?.fields[passwordFieldKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get passwordConfirmField =>
+      formKey.currentState?.fields[passwordConfirmFieldKey];
 
   SignUpBloc({
     required this.authenticationRepository,

@@ -11,6 +11,13 @@ final List<SingleChildWidget> repositories = [
       ),
     ),
   ),
+  RepositoryProvider(
+    create: (context) => HomeRepository(
+      homeService: context.read<HomeService>(),
+      artistMapper: HomeArtistMapper(),
+      songMapper: HomeSongMapper(),
+    ),
+  ),
   // RepositoryProvider(
   //   create: (context) => UserRepository(
   //     firebaseFirestore: context.read<FirebaseFirestore>(),

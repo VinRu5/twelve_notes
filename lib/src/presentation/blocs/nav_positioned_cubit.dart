@@ -6,5 +6,6 @@ part 'nav_positioned_state.dart';
 class NavPositionedCubit extends Cubit<NavPositionedState> {
   NavPositionedCubit() : super(ShowNavPositioned());
 
-  showNavbar(bool showNav) => showNav ? emit(ShowNavPositioned()) : emit(NotShowNavPositioned());
+  void showNavbar(bool showNav) =>
+      showNav ? emit(ShowNavPositioned()) : emit(NotShowNavPositioned());
 }

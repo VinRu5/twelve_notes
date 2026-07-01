@@ -50,5 +50,9 @@
   "homeTitlePage": "Home",
   "libraryTitlePage": "Library",
   "searchTitlePage": "Search",
-  "settingsTitlePage": "Settings"
+  "settingsTitlePage": "Settings",
+  "searchHint": "Search artists and songs...",
+  "searchSectionArtists": "Artists",
+  "searchSectionSongs": "Songs",
+  "searchNoResults": "No results found"
 }

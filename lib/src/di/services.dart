@@ -27,4 +27,8 @@ final List<SingleChildWidget> services = [
         // supabase: context.read<SupabaseClient>(),
         ),
   ),
+
+  Provider<HomeService>(
+    create: (context) => HomeService(),
+  ),
 ];

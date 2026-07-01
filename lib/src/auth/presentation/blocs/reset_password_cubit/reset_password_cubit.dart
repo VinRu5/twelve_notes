@@ -13,7 +13,8 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
 
   final formKey = GlobalKey<FormBuilderState>();
 
-  get resetEmailField => formKey.currentState?.fields[resetEmailNameKey];
+  FormBuilderFieldState<FormBuilderField, dynamic>? get resetEmailField =>
+      formKey.currentState?.fields[resetEmailNameKey];
 
   ResetPasswordCubit({
     required this.authenticationRepository,
@@ -24,7 +25,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
 
     if ((isValid ?? false) && resetEmailField != null) {
       try {
-        await authenticationRepository.resetPassword(resetEmailField.value);
+        await authenticationRepository.resetPassword(resetEmailField!.value as String);
 
         emit(ResetPasswordSended());
       } catch (e) {

@@ -44,7 +44,7 @@ class SettingsPage extends StatelessWidget {
 }
 
 class _HeaderSettings extends StatelessWidget {
-  const _HeaderSettings({super.key});
+  const _HeaderSettings();
 
   @override
   Widget build(BuildContext context) => Padding(

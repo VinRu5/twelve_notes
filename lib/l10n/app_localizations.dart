@@ -355,6 +355,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get settingsTitlePage;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search artists and songs...'**
+  String get searchHint;
+
+  /// No description provided for @searchSectionArtists.
+  ///
+  /// In en, this message translates to:
+  /// **'Artists'**
+  String get searchSectionArtists;
+
+  /// No description provided for @searchSectionSongs.
+  ///
+  /// In en, this message translates to:
+  /// **'Songs'**
+  String get searchSectionSongs;
+
+  /// No description provided for @searchNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get searchNoResults;
 }
 
 class _AppLocalizationsDelegate

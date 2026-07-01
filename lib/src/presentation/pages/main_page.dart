@@ -17,7 +17,6 @@ class MainPage extends StatelessWidget {
         routes: const [
           HomeTabRoute(),
           LibraryTabRoute(),
-          SearchTabRoute(),
         ],
         transitionBuilder: (context, child, animation) => FadeTransition(
           opacity: animation,
@@ -29,17 +28,35 @@ class MainPage extends StatelessWidget {
 
           return Scaffold(
             body: child,
-            bottomSheet: _TwelveBottomBar(
-              activeIndex: tabsRouter.activeIndex,
-              icons: const [
-                FontAwesomeIcons.houseChimney,
-                FontAwesomeIcons.book,
-                FontAwesomeIcons.magnifyingGlass,
-              ],
-              onChanged: (activeIndex) {
-                tabsRouter.setActiveIndex(activeIndex);
+            floatingActionButton: IconButton(
+              padding: const EdgeInsets.all(16.0),
+              onPressed: () {
+                tabsRouter.activeIndex == 1
+                    ? tabsRouter.setActiveIndex(0)
+                    : tabsRouter.setActiveIndex(1);
               },
+              icon: SizedBox(
+                width: 34.0,
+                height: 34.0,
+                child: Center(
+                  child: const FaIcon(
+                    size: 28.0,
+                    FontAwesomeIcons.ellipsisVertical,
+                  ),
+                ),
+              ),
             ),
+            // bottomSheet: _TwelveBottomBar(
+            //   activeIndex: tabsRouter.activeIndex,
+            //   icons: const [
+            //     FontAwesomeIcons.houseChimney,
+            //     FontAwesomeIcons.book,
+            //     FontAwesomeIcons.magnifyingGlass,
+            //   ],
+            //   onChanged: (activeIndex) {
+            //     tabsRouter.setActiveIndex(activeIndex);
+            //   },
+            // ),
           );
         },
       );

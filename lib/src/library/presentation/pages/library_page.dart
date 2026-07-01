@@ -46,7 +46,7 @@ class LibraryPage extends StatelessWidget {
 }
 
 class _LastSongs extends StatelessWidget {
-  const _LastSongs({super.key});
+  const _LastSongs();
 
   @override
   Widget build(BuildContext context) => Card(

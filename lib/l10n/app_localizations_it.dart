@@ -147,4 +147,16 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get settingsTitlePage => 'Impostazioni';
+
+  @override
+  String get searchHint => 'Cerca artisti e canzoni...';
+
+  @override
+  String get searchSectionArtists => 'Artisti';
+
+  @override
+  String get searchSectionSongs => 'Canzoni';
+
+  @override
+  String get searchNoResults => 'Nessun risultato trovato';
 }

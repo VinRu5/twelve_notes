@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
+import 'package:twelve_notes/src/app.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'src/app.dart';
 import 'src/utils/logger.dart';
 
 void main() async {

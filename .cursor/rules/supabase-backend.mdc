@@ -1,0 +1,23 @@
+---
+description: Convenzioni Supabase e backend per Twelve Notes
+globs: supabase/**/*
+alwaysApply: false
+---
+
+# Supabase
+
+- Schema e migrazioni in `supabase/migrations/`; seed in `supabase/seed.sql`.
+- Config locale in `supabase/config.toml`.
+- L'app usa `supabase_flutter`; client iniettato in `DependencyInjector` (attualmente `MockSupabaseClient`).
+
+## Integrazione app
+
+- Variabili: `SUPABASE_URL`, `SUPABASE_ANON` via `--dart-define` (`Environment`).
+- Services in `lib/src/<feature>/data/services/` wrappano le chiamate Supabase.
+- DTO allineati allo schema DB (`fieldRename: FieldRename.snake`).
+
+## Migrazioni
+
+- Nomi file: timestamp descrittivo (es. `20241022095345_remote_schema.sql`).
+- Dopo cambi schema: aggiornare DTO, mapper e services corrispondenti nell'app.
+- Non esporre service role key nell'app Flutter — solo anon key lato client.

@@ -1,0 +1,23 @@
+# Segreti locali
+.env/
+
+# Flutter / Dart build e cache
+.dart_tool/
+build/
+.fvm/
+.pub-cache/
+.pub/
+
+# Android
+**/.gradle/
+**/android/.cxx/
+**/android/app/build/
+
+# iOS / macOS
+**/ios/Pods/
+**/ios/.symlinks/
+**/macos/Pods/
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,22 @@
+---
+description: Contesto generale del progetto Twelve Notes
+alwaysApply: true
+---
+
+# Twelve Notes
+
+App Flutter per canzoni con testi e accordi. Stack: Flutter 3.35.7 (FVM), BLoC, auto_route, Supabase.
+
+## Modifiche
+
+- Rispetta l'architettura feature-first: `data` → `domain` → `presentation` sotto `lib/src/<feature>/`.
+- Registra nuove dipendenze in `lib/src/di/` (services, repositories, blocs).
+- Stringhe UI in `lib/l10n/*.arb`, non hardcoded.
+- Tema da `lib/src/theme/` (`TwelveTheme`, `TwelveColors`).
+- Log con `talker` (`lib/src/utils/logger.dart`).
+
+## Attenzione
+
+- Auth/Supabase sono parzialmente mockati: non riattivare senza `--dart-define` corretti.
+- `.env/` è ignorata da Cursor e non va committata.
+- Dopo nuove route o DTO: `dart run build_runner build --delete-conflicting-outputs`.

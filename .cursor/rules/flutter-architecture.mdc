@@ -1,0 +1,54 @@
+---
+description: Architettura e convenzioni Dart/Flutter per Twelve Notes
+globs: lib/**/*.dart
+alwaysApply: false
+---
+
+# Architettura Flutter
+
+## Layer per feature
+
+```
+presentation/ → domain/repositories → data/services + data/mappers
+```
+
+- I widget chiamano solo repository o bloc/cubit, mai `SupabaseClient` direttamente.
+- I repository orchestrano services e mapper; gestiscono eccezioni di dominio da `lib/src/errors/`.
+
+## BLoC
+
+- Bloc globali in `lib/src/di/blocs.dart`; bloc di pagina in `wrappedRoute` della `@RoutePage`.
+- State ed event in `part` file separati; usare `Equatable`.
+- Form auth: `FormBuilder` con chiavi statiche sul bloc (es. `SignInBloc.emailNameKey`).
+
+## Routing
+
+- Configurazione in `lib/src/router/app_router.dart`; file generato `app_router.gr.dart`.
+- Guard auth su `AuthCubit`; route pubbliche in `_notGuardingRoute`.
+- Path deep link in `TwelveK` (`lib/src/misc/constants.dart`).
+
+## DTO e mapper
+
+```dart
+// Mapper condiviso
+abstract class Mapper<E, D> {
+  E toModel(D dto);
+  D toDTO(E entity);
+}
+```
+
+- DTO con `@JsonSerializable(fieldRename: FieldRename.snake)`.
+- Non modificare `*.g.dart` o `*.gr.dart`.
+
+## Esempio nuova pagina
+
+```dart
+@RoutePage()
+class MyPage extends StatelessWidget implements AutoRouteWrapper {
+  @override
+  Widget wrappedRoute(BuildContext context) => BlocProvider(
+        create: (_) => MyBloc(repo: context.read<MyRepository>()),
+        child: this,
+      );
+}
+```

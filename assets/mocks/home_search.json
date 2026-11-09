@@ -1,0 +1,702 @@
+[
+  {
+    "id": "1",
+    "artist": "Lucio Dalla",
+    "title": "Caruso",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "2",
+    "artist": "Vasco Rossi",
+    "title": "Albachiara",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "3",
+    "artist": "Eros Ramazzotti",
+    "title": "Più bella cosa",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "4",
+    "artist": "Laura Pausini",
+    "title": "La solitudine",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "5",
+    "artist": "Tiziano Ferro",
+    "title": "Sere nere",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "6",
+    "artist": "Måneskin",
+    "title": "Zitti e buoni",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "7",
+    "artist": "Francesco De Gregori",
+    "title": "La donna cannone",
+    "genre": "Cantautorato",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "8",
+    "artist": "Jovanotti",
+    "title": "A te",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "9",
+    "artist": "Andrea Bocelli",
+    "title": "Con te partirò",
+    "genre": "Classica",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "10",
+    "artist": "Ligabue",
+    "title": "Certe notti",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "11",
+    "artist": "Elisa",
+    "title": "Luce (Tramonti a nord est)",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "12",
+    "artist": "Zucchero",
+    "title": "Senza una donna",
+    "genre": "Blues",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "13",
+    "artist": "Mina",
+    "title": "Se telefonando",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "14",
+    "artist": "Adriano Celentano",
+    "title": "Azzurro",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "15",
+    "artist": "Fabrizio De André",
+    "title": "Bocca di rosa",
+    "genre": "Cantautorato",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "16",
+    "artist": "Ultimo",
+    "title": "I tuoi particolari",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "17",
+    "artist": "Madonna",
+    "title": "Like a Virgin",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "18",
+    "artist": "Ed Sheeran",
+    "title": "Shape of You",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "19",
+    "artist": "Coldplay",
+    "title": "Viva la Vida",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "20",
+    "artist": "Queen",
+    "title": "Bohemian Rhapsody",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "21",
+    "artist": "The Beatles",
+    "title": "Hey Jude",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "22",
+    "artist": "Elton John",
+    "title": "Rocket Man",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "23",
+    "artist": "Adele",
+    "title": "Hello",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "24",
+    "artist": "Lady Gaga",
+    "title": "Bad Romance",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "25",
+    "artist": "Billie Eilish",
+    "title": "Bad Guy",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "26",
+    "artist": "Dua Lipa",
+    "title": "Levitating",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "27",
+    "artist": "Harry Styles",
+    "title": "As It Was",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "28",
+    "artist": "Taylor Swift",
+    "title": "Blank Space",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "29",
+    "artist": "Bruno Mars",
+    "title": "Uptown Funk",
+    "genre": "Funk",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "30",
+    "artist": "Rihanna",
+    "title": "Diamonds",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "31",
+    "artist": "Lucio Dalla",
+    "title": "L'anno che verrà",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "32",
+    "artist": "Vasco Rossi",
+    "title": "Sally",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "33",
+    "artist": "Eros Ramazzotti",
+    "title": "Un'emozione per sempre",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "34",
+    "artist": "Laura Pausini",
+    "title": "Strani amori",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "35",
+    "artist": "Tiziano Ferro",
+    "title": "Non me lo so spiegare",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "36",
+    "artist": "Måneskin",
+    "title": "Beggin'",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "37",
+    "artist": "Francesco De Gregori",
+    "title": "Rimmel",
+    "genre": "Cantautorato",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "38",
+    "artist": "Jovanotti",
+    "title": "Ragazzo fortunato",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "39",
+    "artist": "Andrea Bocelli",
+    "title": "Vivo per lei",
+    "genre": "Classica",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "40",
+    "artist": "Ligabue",
+    "title": "Urlando contro il cielo",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "41",
+    "artist": "Elisa",
+    "title": "O forse sei tu",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "42",
+    "artist": "Zucchero",
+    "title": "Diamante",
+    "genre": "Blues",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "43",
+    "artist": "Mina",
+    "title": "Parole parole",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "44",
+    "artist": "Adriano Celentano",
+    "title": "Il ragazzo della via Gluck",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "45",
+    "artist": "Fabrizio De André",
+    "title": "La canzone di Marinella",
+    "genre": "Cantautorato",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "46",
+    "artist": "Ultimo",
+    "title": "Pianeti",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "47",
+    "artist": "Madonna",
+    "title": "Hung Up",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "48",
+    "artist": "Ed Sheeran",
+    "title": "Perfect",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "49",
+    "artist": "Coldplay",
+    "title": "Fix You",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "50",
+    "artist": "Queen",
+    "title": "Don't Stop Me Now",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "51",
+    "artist": "The Beatles",
+    "title": "Let It Be",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "52",
+    "artist": "Elton John",
+    "title": "Tiny Dancer",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "53",
+    "artist": "Adele",
+    "title": "Someone Like You",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "54",
+    "artist": "Lady Gaga",
+    "title": "Poker Face",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "55",
+    "artist": "Billie Eilish",
+    "title": "Ocean Eyes",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "56",
+    "artist": "Dua Lipa",
+    "title": "Don't Start Now",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "57",
+    "artist": "Harry Styles",
+    "title": "Watermelon Sugar",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "58",
+    "artist": "Taylor Swift",
+    "title": "Love Story",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "59",
+    "artist": "Bruno Mars",
+    "title": "Just the Way You Are",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "60",
+    "artist": "Rihanna",
+    "title": "Umbrella",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "61",
+    "artist": "Lucio Dalla",
+    "title": "Attenti al lupo",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "62",
+    "artist": "Vasco Rossi",
+    "title": "Vita spericolata",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "63",
+    "artist": "Eros Ramazzotti",
+    "title": "Cose della vita",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "64",
+    "artist": "Laura Pausini",
+    "title": "Invece no",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "65",
+    "artist": "Tiziano Ferro",
+    "title": "Il regalo più grande",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "66",
+    "artist": "Måneskin",
+    "title": "Torna a casa",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "67",
+    "artist": "Francesco De Gregori",
+    "title": "Generale",
+    "genre": "Cantautorato",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "68",
+    "artist": "Jovanotti",
+    "title": "Bella",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "69",
+    "artist": "Andrea Bocelli",
+    "title": "Romanza",
+    "genre": "Classica",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "70",
+    "artist": "Ligabue",
+    "title": "Piccola stella senza cielo",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "71",
+    "artist": "Elisa",
+    "title": "Se piovesse il tuo nome",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "72",
+    "artist": "Zucchero",
+    "title": "Il Volo",
+    "genre": "Blues",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "73",
+    "artist": "Mina",
+    "title": "Ancora ancora ancora",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "74",
+    "artist": "Adriano Celentano",
+    "title": "Prisencolinensinainciusol",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "75",
+    "artist": "Fabrizio De André",
+    "title": "Il pescatore",
+    "genre": "Cantautorato",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "76",
+    "artist": "Ultimo",
+    "title": "Ti dedico il silenzio",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "77",
+    "artist": "Madonna",
+    "title": "Vogue",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "78",
+    "artist": "Ed Sheeran",
+    "title": "Thinking Out Loud",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "79",
+    "artist": "Coldplay",
+    "title": "Paradise",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "80",
+    "artist": "Queen",
+    "title": "We Will Rock You",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "81",
+    "artist": "The Beatles",
+    "title": "Yesterday",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "82",
+    "artist": "Elton John",
+    "title": "Your Song",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "83",
+    "artist": "Adele",
+    "title": "Rolling in the Deep",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "84",
+    "artist": "Lady Gaga",
+    "title": "Shallow",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "85",
+    "artist": "Billie Eilish",
+    "title": "Everything I Wanted",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "86",
+    "artist": "Dua Lipa",
+    "title": "Physical",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "87",
+    "artist": "Harry Styles",
+    "title": "Sign of the Times",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "88",
+    "artist": "Taylor Swift",
+    "title": "Shake It Off",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "89",
+    "artist": "Bruno Mars",
+    "title": "Grenade",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "90",
+    "artist": "Rihanna",
+    "title": "We Found Love",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "91",
+    "artist": "Lucio Dalla",
+    "title": "Come è profondo il mare",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "92",
+    "artist": "Vasco Rossi",
+    "title": "Gli spari sopra",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "93",
+    "artist": "Eros Ramazzotti",
+    "title": "Se bastasse una canzone",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "94",
+    "artist": "Laura Pausini",
+    "title": "Simili",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "95",
+    "artist": "Tiziano Ferro",
+    "title": "Per dirti ciao!",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "96",
+    "artist": "Måneskin",
+    "title": "Morirò da re",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "97",
+    "artist": "Francesco De Gregori",
+    "title": "Alice",
+    "genre": "Cantautorato",
+    "image": "assets/images/welcome_image_2.jpg"
+  },
+  {
+    "id": "98",
+    "artist": "Jovanotti",
+    "title": "Serenata rap",
+    "genre": "Pop",
+    "image": "assets/images/welcome_image_3.jpg"
+  },
+  {
+    "id": "99",
+    "artist": "Andrea Bocelli",
+    "title": "Il mare calmo della sera",
+    "genre": "Classica",
+    "image": "assets/images/welcome_image_4.jpg"
+  },
+  {
+    "id": "100",
+    "artist": "Ligabue",
+    "title": "Balliamo sul mondo",
+    "genre": "Rock",
+    "image": "assets/images/welcome_image_2.jpg"
+  }
+]

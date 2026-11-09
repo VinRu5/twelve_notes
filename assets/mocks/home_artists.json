@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "name": "Lucio Dalla",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Mina",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Fabrizio De André",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Adriano Celentano",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Laura Pausini",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Eros Ramazzotti",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "7",
+    "name": "Tiziano Ferro",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "8",
+    "name": "Francesco De Gregori",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "9",
+    "name": "Antonello Venditti",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "10",
+    "name": "Giorgia",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "11",
+    "name": "Jovanotti",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "12",
+    "name": "Zucchero",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "13",
+    "name": "Ligabue",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "14",
+    "name": "Vasco Rossi",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "15",
+    "name": "Andrea Bocelli",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "16",
+    "name": "Emma Marrone",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "17",
+    "name": "Mahmood",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "18",
+    "name": "Noemi",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "19",
+    "name": "Francesco Gabbani",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  },
+  {
+    "id": "20",
+    "name": "Ultimo",
+    "avatar_image": "assets/images/welcome_image_1.jpg"
+  }
+]
